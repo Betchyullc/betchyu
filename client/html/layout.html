@@ -5,9 +5,13 @@
 </head>
 <body>{{> layout}}</body>
 <template name="layout">
-  {{#if currentUser}}
-    {{> my_home}}
-  {{else}}
-    {{> landing}}
-  {{/if}}
+  <div class="container">
+    {{#if currentUser}}
+      {{> my_home}}
+    {{else}}
+      <div class="step-container">
+        {{> landing}}
+      </div>
+    {{/if}}
+  </div>
 </template>

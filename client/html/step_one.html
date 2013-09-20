@@ -1,8 +1,33 @@
 <template name="step_one">
   <h1>Step 1 (of 3)</h1>
-  <h2>Your weight-loss Goal</h2>
-  <div id="weightLoss" />
-  <h2>Your Time Frame</h2>
-  <div id="timeFrame" />
-  <button id="nextStep">Next >></button>
+  <h2>
+    Your weight-loss Goal:
+    {{goal}}
+  </h2>
+  {{#constant}}
+  <div>
+    <span style="float:left">0</span>
+    <span style="float:right">50</span>
+    <div style="width:300px;margin-left:auto;margin-right:auto">
+      <div id="weightLoss" />
+    </div>
+  </div>
+  {{/constant}}
+
+  <h2>
+    Your Time Frame:
+    {{days}}
+  </h2>
+  {{#constant}}
+  <div>
+    <span style="float:left">10</span>
+    <span style="float:right">365</span>
+    <div style="width:300px;margin-left:auto;margin-right:auto">
+      <div id="timeFrame" />
+    </div>
+  </div>
+  {{/constant}}
+  <div style="padding:20px;width:70px;margin-right:auto;margin-left:auto">
+    <button id="nextStep">Next >></button>
+  </div>
 </template>

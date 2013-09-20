@@ -3,14 +3,27 @@
     {{loginButtons align="right"}}
   </div>
   <div class="step-container">
-  {{#if onStep 1}}
-    {{> step_one}}
-  {{/if}}
-  {{#if onStep 2}}
-    {{> step_two}}
-  {{/if}}
-  {{#if onStep 3}}
-    {{> step_three}}
-  {{/if}}
+    {{#if view 'goals'}}
+      <button style="float:right" id="newGoal">New Goal</button>
+      <ul>
+      {{#each bets}}
+        <li>I will lose {{goal}} lbs in {{days}} days</li>
+      {{/each}}
+      </ul>
+    {{else}}
+      <button style="float:right" id="allGoals">My Goals</button>
+      {{#if onStep 1}}
+        {{> step_one}}
+      {{/if}}
+      {{#if onStep 2}}
+        {{> step_two}}
+      {{/if}}
+      {{#if onStep 3}}
+        {{> step_three}}
+      {{/if}}
+      {{#if onStep 4}}
+        Your goal is recorded
+      {{/if}}
+    {{/if}}
   </div>
 </template>
