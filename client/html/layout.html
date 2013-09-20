@@ -1,0 +1,13 @@
+<head>
+  <title>Betchyu Can Do It</title>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+  <script src="http://codeorigin.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
+</head>
+<body>{{> layout}}</body>
+<template name="layout">
+  {{#if currentUser}}
+    {{> my_home}}
+  {{else}}
+    {{> landing}}
+  {{/if}}
+</template>

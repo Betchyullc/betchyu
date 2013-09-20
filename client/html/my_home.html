@@ -1,0 +1,16 @@
+<template name="my_home">
+  <div style="float:right">
+    {{loginButtons align="right"}}
+  </div>
+  <div class="step-container">
+  {{#if onStep 1}}
+    {{> step_one}}
+  {{/if}}
+  {{#if onStep 2}}
+    {{> step_two}}
+  {{/if}}
+  {{#if onStep 3}}
+    {{> step_three}}
+  {{/if}}
+  </div>
+</template>
