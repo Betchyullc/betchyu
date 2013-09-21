@@ -2,9 +2,9 @@
   <h1>Step 3</h1>
   <p>Select friends to challenge</p>
   <ul id="friend">
-    <li class="{{selected 'Joe'}}">Joe</li>
-    <li class="{{selected 'John'}}">John</li>
-    <li class="{{selected 'Jake'}}">Jake</li>
+    {{#each friends}}
+      <li class="{{selected name}}">{{name}}</li>
+    {{/each}}
   </ul>
   <button id="nextStep">Finish</button>
 </template>
