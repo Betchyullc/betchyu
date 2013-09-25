@@ -1,0 +1,24 @@
+/*
+  The mobile site is the priority, so all the styles are 'originally' designed for mobile.
+  These 'original' styles are saved in client/css/mobile/.
+  Then, we add the stylesheets from client/css/desktop/ as reactive re-styling to look better on desktops.
+  All the .lessimport files are in client/css/
+    use @import '../filename.lessimport';
+*/
+
+@import '../variables.lessimport';
+
+@media screen and (min-width:800px)
+{
+  html {
+    font-size:1em;
+  }
+  .step-container{
+    width:400px;
+    margin-left:auto;
+    margin-right:auto;
+    border:1px solid #333;
+    padding:20px;
+    background-color:#fff;
+  }
+}
