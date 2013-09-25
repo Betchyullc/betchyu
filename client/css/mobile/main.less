@@ -69,6 +69,19 @@ html, body{
   text-align:center;
   font-family:"Tahoma",arial,sans-serif;
 }
+button {
+  background-color:@secondaryColor;
+  color: @primaryColor;
+  padding:5px;
+  margin:0;
+  border-radius: 3px;
+  border:1px solid darken(@secondaryColor, 5%);
+} button:hover {
+  background-color: lighten(@secondaryColor, 4%);
+} button:active {
+  position:relative;
+  top: 1px;
+}
 h1 {
   margin-top:10px;
 }
