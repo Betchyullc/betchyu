@@ -1,17 +1,17 @@
 <template name="my_home">
-  <div style="float:right">
-    {{loginButtons align="right"}}
-  </div>
   <div class="step-container">
+    {{> toolbar}}
     {{#if view 'goals'}}
-      <button style="float:right" id="newGoal">New Goal</button>
       <ul>
       {{#each bets}}
         <li>I will lose {{goal}} lbs in {{days}} days</li>
       {{/each}}
       </ul>
-    {{else}}
-      <button style="float:right" id="allGoals">My Goals</button>
+    {{/if}}
+    {{#if view 'dashboard'}}
+      {{> dashboard}}
+    {{/if}}
+    {{#if view 'new goal'}}
       {{#if onStep 1}}
         {{> step_one}}
       {{/if}}

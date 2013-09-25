@@ -37,5 +37,11 @@ Template.layout.events({
   'click #newGoal': function(){
     Session.set('view', "new goal");
     Session.set('step', 1);
+  },
+  'click #signout': function(){
+    Meteor.logout();
+  },
+  'click #dashboard': function(){
+    Session.set('view', 'dashboard');
   }
 });
