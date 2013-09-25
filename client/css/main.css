@@ -2,6 +2,10 @@
   height:400px;
   overflow:auto;
 }
+.page-title{
+  text-align:center;
+  color:#35E01B;
+}
 .product-pick{
   background-color: #ff0;
 }
@@ -17,6 +21,7 @@ html, body{
   height:100%;
   font-size:1.5em;
   text-align:center;
+  font-family:"Tahoma",arial,sans-serif;
 }
 h1 {
   margin-top:0;
