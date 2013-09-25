@@ -1,11 +1,19 @@
 <template name="dashboard">
   <div class="dash-body">
     <img src="/favicon.ico" style="position:relative; top:13px"/>
-    <button id="newGoal" style="padding:5px">Create a Challenge</button>
+    <button class="img" id="newGoal" style="padding:5px">Create a Challenge</button>
     <br>
-    <a style="text-align:left" href="#">Bets I've Accepted</a>
-    <ul class="bets">
-      <li>[pic] Friend's Challenge</li>
-    </ul>
+    <div style="margin-top:10px;text-align:left">
+      <a id="showBets" href="#">Bets I've Accepted</a>
+    </div>
+    {{#if showBets}}
+      <ul class="bets">
+        {{#each bets}}
+          <li>[pic] {{placer}}'s Challenge</li>
+        {{else}}
+          You're not involved in anyone else's bets.
+        {{/each}}
+      </ul>
+    {{/if}}
   </div>
 </template>
