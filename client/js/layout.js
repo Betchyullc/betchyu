@@ -12,15 +12,21 @@ Template.layout.events({
       if (Session.get('product') != undefined)
         allowed_to_proceed = true;
     } else { // step == 3
-      if (Session.get('friend') != undefined){
-        Bets.insert({
-          placer: Meteor.userId(),
-          goal: Session.get('goal'),
-          days: Session.get('days'),
-          product: Session.get('product'),
-          friend: Session.get('friend')
-        }, function(err, res){
-          // error handling
+        var friends = Session.get('selected friends');
+      if ( friends != undefined){
+        var goal = Session.get('goal');
+        var days = Session.get('days');
+        var product = Session.get('product');
+        _.each(friends, function(e, i){
+          Bets.insert({
+            placer: Meteor.userId(),
+            goal: goal,
+            days: days,
+            product: product,
+            friend: e
+          }, function(err, res){
+            // error handling
+          });
         });
         allowed_to_proceed = true;
       }else{

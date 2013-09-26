@@ -8,6 +8,25 @@
 
 @import '../variables.lessimport';
 
+.slider{
+  width:70%;
+  margin-left:auto;
+  margin-right:auto;
+  margin-top:10%;
+}
+#nextStep {
+  position:absolute;
+  bottom:0;
+  left:0;
+  height:10%;
+  width:100%;
+  font-size:23px;
+  font-weight:bold;
+  &:active{
+    position:absolute;
+    bottom:1px;
+  }
+}
 .username{
   line-height:2em;
 }
@@ -84,10 +103,10 @@ button {
   background-color: lighten(@secondaryColor, 4%);
 } button:active {
   position:relative;
-  top: 1px;
+  bottom: -1px;
 }
 h1 {
-  margin-top:10px;
+  margin-top:30px;
 }
 a {
   color:@primaryColor;
