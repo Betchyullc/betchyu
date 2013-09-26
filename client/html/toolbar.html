@@ -1,6 +1,6 @@
 <template name="toolbar">
   <div class="toolbar">
-    <button id="signout">Sign Out</button>
+    <button id="signout"><img src="/logout.png"/></button>
     {{#if view 'dashboard'}}
       <span>{{currentUser.profile.name}}</span>
     {{else}}

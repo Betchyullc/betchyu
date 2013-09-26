@@ -8,6 +8,11 @@
 
 @import '../variables.lessimport';
 
+.invites {
+  text-align:left;
+  font-size:0.8em;
+  margin:0;
+}
 .bets {
   text-align:left;
   font-size:0.8em;
@@ -29,9 +34,7 @@
   }
 }
 #signout{
- margin:0;
- position:absolute;
- right:0;
+  float:right;
 }
 .remainder{
   margin-top:10%;
@@ -74,8 +77,9 @@ button {
   color: @primaryColor;
   padding:5px;
   margin:0;
-  border-radius: 3px;
+  border-radius: 8px;
   border:1px solid darken(@secondaryColor, 5%);
+  font-size:1.1em;
 } button:hover {
   background-color: lighten(@secondaryColor, 4%);
 } button:active {
