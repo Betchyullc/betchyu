@@ -1,10 +1,10 @@
 <template name="toolbar">
   <div class="toolbar">
-    <button id="signout"><img src="/logout.png"/></button>
+    <button id="signout"><span class="icon-signout"/></button>
     {{#if view 'dashboard'}}
-      <span>{{currentUser.profile.name}}</span>
+      <span class="username">{{currentUser.profile.name}}</span>
     {{else}}
-      <button style="float:left" id="dashboard">Dashboard</button>
+      <button style="float:left" id="dashboard"><span class="icon-home"/></button>
       <button style="float:left" id="newGoal">New Goal</button>
       <button style="float:left" id="allGoals">My Goals</button>
     {{/if}}
