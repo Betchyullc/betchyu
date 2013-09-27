@@ -16,13 +16,13 @@ Template.dashboard.noChallenges = function(){
   return Bets.find({placer: Meteor.userId()}).count() == 0;
 };
 Template.dashboard.invites = function(){
-  return Invites.find({invitee: Meteor.userId()});
+  return Invites.find({invitee: Meteor.userId(), declined:false, accepted: false});
 };
 Template.dashboard.showInvites = function(){
   return Session.get('dash-showInvites');
 };
 Template.dashboard.bets = function(){
-  return Bets.find({friend: Meteor.user().profile.name});
+  return Invites.find({invitee: Meteor.userId(), declined:false, accepted: true});
 };
 Template.dashboard.showBets = function(){
   return Session.get('dash-showBets');

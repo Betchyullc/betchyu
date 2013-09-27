@@ -9,5 +9,11 @@ Template.my_home.helpers({
   },
   bets: function(){
     return Bets.find({placer: Meteor.userId()});
+  },
+  invites: function(betId){
+    return Invites.find({bet:betId});
+  },
+  getName: function(userId){
+    return Meteor.users.findOne(userId).profile.name;
   }
 });

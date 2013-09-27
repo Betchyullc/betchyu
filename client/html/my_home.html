@@ -5,10 +5,18 @@
       <ul>
       {{#each bets}}
         <li>
-          {{goal}} lbs in {{days}} days
+          <a href="#" data-bet="{{_id}}" class="viewBet">{{goal}} lbs in {{days}} days</a>
           <ul style="text-align:left; font-size:0.8em">
-          {{#each friends}}
-            <li>I invited {{this.name}}</li>
+          {{#each invites this._id}}
+            <li>
+              I invited {{getName invitee}}
+              {{#if accepted}}
+                <span style="color:green">, who Accepted!</span>
+              {{/if}}
+              {{#if declined}}
+                <span style="color:red">, who Declined.</span>
+              {{/if}}
+            </li>
           {{/each}}
           </ul>
         </li>
@@ -31,6 +39,9 @@
       {{#if onStep 4}}
         Your goal is recorded
       {{/if}}
+    {{/if}}
+    {{#if view 'bet'}}
+      {{> viewBet}}
     {{/if}}
   </div>
 </template>

@@ -14,7 +14,10 @@
     {{#if showBets}}
       <ul class="bets">
         {{#each bets}}
-          <li>[pic] {{placer}}'s Challenge</li>
+          <li>
+            <img src="{{fbPicURL inviter}}"/>
+            <a href="#" data-bet="{{bet}}" class="viewBet">{{getName inviter}}'s Challenge</a>
+          </li>
         {{else}}
           You're not involved in anyone else's bets.
         {{/each}}
@@ -28,7 +31,7 @@
         {{#each invites}}
           <li>
             <img src="{{fbPicURL inviter}}"/>
-            {{getName inviter}}'s Challenge
+            <a href="#" data-bet="{{bet}}" class="viewBet">{{getName inviter}}'s Challenge</a>
           </li>
         {{else}}
           No one has offered you any bets.

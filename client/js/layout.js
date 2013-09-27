@@ -34,7 +34,9 @@ Template.layout.events({
             Invites.insert({
               bet: betId,
               inviter: Meteor.user()._id,
-              invitee: bro._id
+              invitee: bro._id,
+              accepted: false,
+              declined: false
             });
           } 
         });
@@ -64,5 +66,29 @@ Template.layout.events({
   },
   'click #dashboard': function(){
     Session.set('view', 'dashboard');
+  },
+  'click .viewBet': function(e){
+    Session.set('bet', $(e.target).data("bet"));
+    Session.set('view', 'bet');
+  },
+  'click #declineBet': function(){
+    var invId = Invites.findOne({
+      bet: this._id,
+      inviter: this.placer,
+      invitee: Meteor.userId()
+    })._id;
+    Invites.update(invId, {
+      $set: {accepted: false, declined: true}
+    });
+  },
+  'click #acceptBet': function(){
+    var invId = Invites.findOne({
+      bet: this._id,
+      inviter: this.placer,
+      invitee: Meteor.userId()
+    })._id;
+    Invites.update(invId, {
+      $set: {accepted: true, declined: false}
+    });
   }
 });

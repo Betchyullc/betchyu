@@ -1,0 +1,14 @@
+<template name="viewBet">
+  Bet info.<br>
+  {{#each bet}}
+    goal: {{goal}} lbs<br>
+    days: {{days}}<br>
+    {{#each friends}}
+      friend: {{this.name}}<br>
+    {{/each}}
+    {{#unless isAccepted}}
+      <button id="acceptBet">Accept the Bet</button>
+      <button class="inverse-button" id="declineBet">Decline the Bet</button>
+    {{/unless}}
+  {{/each}}
+</template>
