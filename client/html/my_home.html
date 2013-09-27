@@ -4,7 +4,14 @@
     {{#if view 'goals'}}
       <ul>
       {{#each bets}}
-        <li>I will lose {{goal}} lbs in {{days}} days</li>
+        <li>
+          {{goal}} lbs in {{days}} days
+          <ul style="text-align:left; font-size:0.8em">
+          {{#each friends}}
+            <li>I invited {{this.name}}</li>
+          {{/each}}
+          </ul>
+        </li>
       {{/each}}
       </ul>
     {{/if}}

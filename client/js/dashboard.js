@@ -1,8 +1,22 @@
+Template.dashboard.getName = function(_id){
+  return Meteor.users.findOne(_id).profile.name;
+};
+Template.dashboard.fbPicURL = function(_id){
+  var fbObj;
+  if (_id == true){
+    fbObj = Meteor.user().services.facebook;
+    return "https://graph.facebook.com/"+ fbObj.username +"/picture?access_token="+ fbObj.accessToken;
+  } else {
+    fbObj = Meteor.users.findOne(_id).services.facebook;
+    return "https://graph.facebook.com/"+ fbObj.username +"/picture";
+  }
+    
+};
 Template.dashboard.noChallenges = function(){
   return Bets.find({placer: Meteor.userId()}).count() == 0;
 };
 Template.dashboard.invites = function(){
-  return []; // need to actually model this.
+  return Invites.find({invitee: Meteor.userId()});
 };
 Template.dashboard.showInvites = function(){
   return Session.get('dash-showInvites');

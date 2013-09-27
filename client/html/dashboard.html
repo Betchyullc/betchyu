@@ -4,8 +4,8 @@
       <img class="img" src="/favicon.ico" style="position:relative; top:13px"/>
       <button id="newGoal" style="padding:5px">Create a Challenge</button>
     {{else}}
-      The current challenge info<br>
-      <button id="allGoals">My Goals</button>
+      <img src="{{fbPicURL true}}"/>
+      <button id="allGoals" style="padding:9px;">My Goals</button>
     {{/if}}
     <br>
     <div style="margin-top:10px;text-align:left">
@@ -26,7 +26,10 @@
     {{#if showInvites}}
       <ul class="invites">
         {{#each invites}}
-          <li>[pic] {{placer}}'s Challenge</li>
+          <li>
+            <img src="{{fbPicURL inviter}}"/>
+            {{getName inviter}}'s Challenge
+          </li>
         {{else}}
           No one has offered you any bets.
         {{/each}}

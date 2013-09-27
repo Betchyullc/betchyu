@@ -9,18 +9,20 @@ Template.step_one.helpers({
   }
 });
 Template.step_one.rendered = function(){
+  var g = Session.get('goal');
   $('#weightLoss').slider({
     min: 0,
     max: 30,
-    value: Session.get('goal'),
+    value: (g == undefined) ? (0) : (g),
     slide: function(e, ui){
       Session.set('goal', ui.value);
     }
   });
+  var d = Session.get('days');
   $('#timeFrame').slider({
     min: 0,
     max: 30,
-    value: Session.get('days'),
+    value: (d == undefined) ? (0) : (d),
     slide: function(e, ui){
       Session.set('days', ui.value);
     }

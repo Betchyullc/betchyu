@@ -1,6 +1,6 @@
 Template.step_three.selected = function(name){
     if(Session.get('selected friends') == undefined) Session.set('selected friends', []);
-  if (_.contains(Session.get('selected friends'), name))
+  if (_.contains(_.pluck(Session.get('selected friends'), 'name'), name))
     return  'product-pick';
   return '';
 };
@@ -21,13 +21,12 @@ Template.step_three.friends = function(){
 Template.step_three.events({
   'click li': function(e){
     if(Session.get('selected friends') == undefined) Session.set('selected friends', []);
-    var friend = $(e.target).text();
-    console.log(friend);
+    var friend_name = $(e.target).text();
     var curr_friends = Session.get('selected friends');
-    if(!_.contains(curr_friends, friend)){
-      curr_friends[curr_friends.length] = friend;
+    if(!_.contains(_.pluck(curr_friends, 'name'), friend_name)){
+      var friend_obj = _.findWhere(Session.get('friends'), {name: friend_name});
+      curr_friends[curr_friends.length] = friend_obj;
       Session.set('selected friends', curr_friends);
-      console.log(curr_friends);
     }
   }
 });

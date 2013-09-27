@@ -7,8 +7,8 @@ Bets.allow({
            && !isNaN(bet.days)
            && bet.product != undefined 
            && isNaN(bet.product)
-           && bet.friend != undefined
-           && isNaN(bet.friend)
+           && bet.friends != undefined
+           && Array.isArray(bet.friends)
            ;
   }
 });
