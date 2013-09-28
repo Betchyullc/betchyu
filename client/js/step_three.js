@@ -23,10 +23,14 @@ Template.step_three.events({
     if(Session.get('selected friends') == undefined) Session.set('selected friends', []);
     var friend_name = $(e.target).text();
     var curr_friends = Session.get('selected friends');
+    var friend_obj = _.findWhere(Session.get('friends'), {name: friend_name});
     if(!_.contains(_.pluck(curr_friends, 'name'), friend_name)){
-      var friend_obj = _.findWhere(Session.get('friends'), {name: friend_name});
       curr_friends[curr_friends.length] = friend_obj;
       Session.set('selected friends', curr_friends);
+    } else {
+      Session.set('selected friends', _.reject(curr_friends, function(e){
+        return e.id == friend_obj.id;
+      }));
     }
   }
 });

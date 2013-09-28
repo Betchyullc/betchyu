@@ -59,8 +59,15 @@
   margin-top:10%;
   margin-bottom:10%;
 }
+.friendslist-container {
+  height:60%;
+}
 #friend {
-  height:400px;
+  margin-top:0;
+  margin-left:10px;
+  padding-left:10px;
+  text-align:left;
+  height:90%;
   overflow:auto;
 }
 .page-title{
@@ -79,9 +86,19 @@
   background-color:#ccc;
 }
 .img {
-  height:5%;
-  width:5%;
+  border-radius:2px;
+  border: 1px solid #666;
+  padding:3px;
 }
+.img-lower {
+  position:relative;
+  top:13px;
+}
+.img-lower-profile {
+  position:relative;
+  top:23px;
+}
+
 html, body{
   margin:0;
   padding:0;
@@ -115,6 +132,16 @@ button {
 
 h1 {
   margin-top:30px;
+  font-size:0.75em;
+}
+h2 {
+  font-size:0.7em;
+}
+p {
+  font-size:0.7em;
+  margin:0;
+  padding-top:0.1em;
+  padding-bottom:0.1em;
 }
 a {
   color:@primaryColor;
@@ -123,13 +150,9 @@ a:hover {
   color: lighten(@primaryColor, 7%);
 }
 .step-container{
-  width:90%;
-  margin-left:auto;
-  margin-right:auto;
-  height:90%;
+  width:100%;
   overflow:auto;
-  position:relative;
-  top:5%;
+  height:100%;
   border:1px solid #333;
   background-color:#fff;
 }

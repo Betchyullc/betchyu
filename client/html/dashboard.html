@@ -1,10 +1,10 @@
 <template name="dashboard">
   <div class="dash-body">
     {{#if noChallenges}}
-      <img class="img" src="/favicon.ico" style="position:relative; top:13px"/>
+      <img class="img img-lower" src="/favicon.ico"/>
       <button id="newGoal" style="padding:5px">Create a Challenge</button>
     {{else}}
-      <img src="{{fbPicURL true}}"/>
+      <img class="img img-lower-profile" src="{{fbPicURL true}}"/>
       <button id="allGoals" style="padding:9px;">My Goals</button>
     {{/if}}
     <br>
