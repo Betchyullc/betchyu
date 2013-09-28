@@ -30,7 +30,7 @@ Template.layout.events({
         });
         _.each(friends, function(e, i){
           var bro = Meteor.users.findOne({"services.facebook.id":e.id});
-          if (bro != undefined){
+          if (bro != undefined){ // the user is already on betchyu
             Invites.insert({
               bet: betId,
               inviter: Meteor.user()._id,
@@ -38,7 +38,16 @@ Template.layout.events({
               accepted: false,
               declined: false
             });
-          } 
+          } else { // gotta ask them through Facebook to join betchyu
+            Invites.insert({
+              bet: betId,
+              inviter: Meteor.user()._id,
+              invitee: e.id,
+              accepted: false,
+              declined: false,
+              uncreated: true
+            });
+          }
         });
         allowed_to_proceed = true;
         // clear all of the Challenge-specific Session data.
