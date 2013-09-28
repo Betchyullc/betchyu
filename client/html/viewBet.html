@@ -4,7 +4,10 @@
     goal: {{goal}} lbs<br>
     days: {{days}}<br>
     {{#each friends}}
-      friend: {{this.name}}<br>
+      friend: {{this.name}}
+      {{#if needToInvite this.id}}
+        <button data-fbid="{{this.id}}" class="inviteToBetchyu">Invite to Betchyu</button><br>
+      {{/if}}
     {{/each}}
     {{#unless isAccepted}}
       <button id="acceptBet">Accept the Bet</button>

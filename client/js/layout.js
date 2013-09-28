@@ -99,5 +99,14 @@ Template.layout.events({
     Invites.update(invId, {
       $set: {accepted: true, declined: false}
     });
+  },
+  'click .inviteToBetchyu': function(e){
+    FB.ui({
+      method: 'feed',
+      link: window.location.origin,
+      to: $(e.target).data('fbid'),
+      name: 'Betchyu',
+      caption: Meteor.user().profile.name + ' wants you to join Betchyu!'
+    });
   }
 });

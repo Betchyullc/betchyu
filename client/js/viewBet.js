@@ -10,3 +10,6 @@ Template.viewBet.isAccepted = function(){
 Template.viewBet.bet = function(){
   return Bets.find(Session.get('bet'));
 };
+Template.viewBet.needToInvite = function(fbid){
+  return Meteor.users.findOne({"services.facebook.id":fbid}) == undefined;
+};

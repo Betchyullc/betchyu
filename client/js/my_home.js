@@ -11,7 +11,7 @@ Template.my_home.helpers({
     return Bets.find({placer: Meteor.userId()});
   },
   invites: function(betId){
-    return Invites.find({bet:betId});
+    return Invites.find({bet:betId, uncreated:{$not: true}});
   },
   getName: function(userId){
     return Meteor.users.findOne(userId).profile.name;
