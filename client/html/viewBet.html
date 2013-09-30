@@ -6,8 +6,8 @@
     {{#each friends}}
       friend: {{this.name}}
       {{#if needToInvite this.id}}
-        <button data-fbid="{{this.id}}" class="inviteToBetchyu">Invite to Betchyu</button><br>
-      {{/if}}
+        <button data-fbid="{{this.id}}" class="inviteToBetchyu">Invite to Betchyu</button>
+      {{/if}}<br>
     {{/each}}
     {{#unless isAccepted}}
       <button id="acceptBet">Accept the Bet</button>
