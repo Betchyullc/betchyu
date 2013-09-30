@@ -1,3 +1,10 @@
+Template.step_three.formatted_num_selected = function(){
+  var len = Session.get('selected friends').length;
+  if (len == 0){
+    return '';
+  }
+  return "("+len+")";
+};
 Template.step_three.selected = function(name){
     if(Session.get('selected friends') == undefined) Session.set('selected friends', []);
   if (_.contains(_.pluck(Session.get('selected friends'), 'name'), name))
@@ -12,10 +19,11 @@ Template.step_three.friends = function(){
       }
     }, function(err, res){
       Session.set('friends', res.data.data);
+      Session.set('allowed friends', res.data.data);
     });
     return [];
   } else {
-    return Session.get('friends');
+    return Session.get('allowed friends');
   }
 };
 Template.step_three.events({
@@ -36,3 +44,14 @@ Template.step_three.events({
     }
   }
 });
+
+
+Template.step_three.events({
+  'keypress #searchbar':function(e){
+    var search_str = $(e.target).val() + String.fromCharCode(e.which);
+    var new_f_list = _.filter(Session.get('friends'), function(e){
+      return e.name.indexOf(search_str) != -1;
+    });
+    Session.set('allowed friends', new_f_list);
+  }
+})
