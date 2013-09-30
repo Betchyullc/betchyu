@@ -105,6 +105,7 @@ Template.layout.events({
     });
   },
   'click .inviteToBetchyu': function(e){
+    Meteor.shared.makeFB();
     FB.ui({
       method: 'feed',
       link: window.location.origin,

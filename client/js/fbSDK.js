@@ -1,6 +1,5 @@
-Template.fbSDK.created = function(){
-  if(!Session.get('FB exists?')){
-    Session.set('FB exists?', true);
+Meteor.shared.makeFB = function(){
+  if($('#fb-root *').length == 0){
 
     window.fbAsyncInit = function() {
       // init the FB JS SDK
@@ -21,3 +20,4 @@ Template.fbSDK.created = function(){
     }(document, 'script', 'facebook-jssdk'));
   }
 };
+Template.fbSDK.created = Meteor.shared.makeFB;
