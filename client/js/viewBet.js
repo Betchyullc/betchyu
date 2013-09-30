@@ -11,6 +11,8 @@ Template.viewBet.bet = function(){
   return Bets.find(Session.get('bet'));
 };
 Template.viewBet.needToInvite = function(fbid){
+  if (Meteor.userId() != Bets.findOne(Session.get('bet')).placer)
+    return false;
   return Meteor.users.findOne({"services.facebook.id":fbid}) == undefined;
 };
 Template.viewBet.formatted_owners_bet = function(){
