@@ -62,6 +62,10 @@ Template.layout.events({
 
     if (allowed_to_proceed)
       Session.set('step', (step + 1));
+    if (Session.get('step') == 4){
+      Session.set('bet', betId);
+      Session.set('view', 'bet');
+    }
   },
   'click #allGoals': function(){
     Session.set('view', "goals");

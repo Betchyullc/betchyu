@@ -1,8 +1,16 @@
 <template name="viewBet">
-  Bet info.<br>
+  {{formatted_owners_bet}}<br>
+  <hr>
   {{#each bet}}
-    goal: {{goal}} lbs<br>
-    days: {{days}}<br>
+    The Bet: Lose {{goal}} lbs in {{days}} days<br>
+    {{days_left this}} days left to go
+    <hr>
+    On Board: <br>
+    {{#each accepted this._id}}
+      {{getName invitee}}<br>
+    {{/each}}
+    <hr>
+    Invited:<br>
     {{#each friends}}
       friend: {{this.name}}
       {{#if needToInvite this.id}}
