@@ -4,7 +4,7 @@ Meteor.shared.makeFB = function(){
     window.fbAsyncInit = function() {
       // init the FB JS SDK
       FB.init({
-      appId      : (window.location.origin == "http://localhost:3000") ? ('163018687227482') : ('560902563947188'),
+      appId      : (window.location.origin == "http://localhost:3000") ? ('754096961273788') : ('560902563947188'),
       status     : true,                                 // Check Facebook Login status
       xfbml      : true                                  // Look for social plugins on the page
     });
