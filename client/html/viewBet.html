@@ -1,23 +1,33 @@
 <template name="viewBet">
-  {{formatted_owners_bet}}<br>
+  {{formatted_owners_bet}}
   <hr>
   {{#each bet}}
-    The Bet: Lose {{goal}} lbs in {{days}} days<br>
-    The Stake: {{product}}<br>
-    {{days_left this}} days left to go.
+    <div>
+      The Bet: Lose {{goal}} lbs in {{days}} days<br>
+      The Stake: {{product}}<br>
+      {{days_left this}} days left to go.
+    </div>
     <hr>
-    On Board: <br>
+    <div style="text-align:left">
+      On Board:
+    </div>
     {{#each accepted this._id}}
       {{getName invitee}}<br>
     {{/each}}
     <hr>
-    Invited:<br>
+    <div style="text-align:left">
+      Invited:
+    </div>
+    <ul style="text-align:left">
     {{#each friends}}
-      friend: {{this.name}}
-      {{#if needToInvite this.id}}
-        <button data-fbid="{{this.id}}" class="inviteToBetchyu">Invite to Betchyu</button>
-      {{/if}}<br>
+      <li>
+        {{this.name}}
+        {{#if needToInvite this.id}}
+          <button data-fbid="{{this.id}}" class="inviteToBetchyu">Invite to Betchyu</button>
+        {{/if}}
+      </li>
     {{/each}}
+    </ul>
     {{#unless isAccepted}}
       <button id="acceptBet">Accept the Bet</button>
       <button class="inverse-button" id="declineBet">Decline the Bet</button>
