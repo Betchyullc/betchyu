@@ -1,10 +1,22 @@
 Meteor.shared.makeFB = function(){
+  var mapper = function (){
+    var here = window.location.origin;
+    switch(here){
+      case "http://betchyu.meteor.com":
+        return '560902563947188';
+      case "http://www.betchyu.com":
+        return '178891345633576';
+      case "http://localhost:3000":
+      default:
+        return '754096961273788';
+    }
+  };
   if($('#fb-root *').length == 0){
 
     window.fbAsyncInit = function() {
       // init the FB JS SDK
       FB.init({
-      appId      : (window.location.origin == "http://localhost:3000") ? ('754096961273788') : ('560902563947188'),
+      appId      : mapper(),
       status     : true,                                 // Check Facebook Login status
       xfbml      : true                                  // Look for social plugins on the page
     });
