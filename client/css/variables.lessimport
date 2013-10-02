@@ -1,3 +1,9 @@
-@highlightColor: #ff0;
-@primaryColor: #35E01B;
-@secondaryColor: #3A93C9;
+/*Colors*/
+@lightBackgroundColor:#FFF6CE;
+@midBackgroundColor:#F6D87F;
+@darkBackgroundColor:#F6BB01;
+
+@highlightColor: #FF8D02;
+
+@lightOffsetColor:#66A7AB;
+@darkOffsetColor:#406467;

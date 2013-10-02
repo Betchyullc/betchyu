@@ -50,8 +50,8 @@
 }
 .toolbar {
   position:relative;
-  background-color:@primaryColor;
-  border-bottom:4px solid @secondaryColor;
+  background-color:@lightBackgroundColor;
+  border-bottom:4px solid @darkOffsetColor;
   height:10%;
   button {
     height:100%;
@@ -78,10 +78,10 @@
 }
 .page-title{
   text-align:center;
-  color:#35E01B;
-  -webkit-text-shadow: 1px -2px 4px #3A93C9;
-     -moz-text-shadow: 1px -2px 4px #3A93C9;
-          text-shadow: 1px -2px 4px #3A93C9;
+  color:@darkBackgroundColor;
+  -webkit-text-shadow: 1px -2px 4px @darkOffsetColor;
+     -moz-text-shadow: 1px -2px 4px @darkOffsetColor;
+          text-shadow: 1px -2px 4px @darkOffsetColor;
 }
 .product-pick{
   background-color: @highlightColor;
@@ -115,25 +115,25 @@ html, body{
   font-family:"Tahoma",arial,sans-serif;
 }
 button {
-  background-color:@secondaryColor;
-  color: @primaryColor;
+  background-color:@midBackgroundColor;
+  color: @lightOffsetColor;
   padding:5px;
   margin:0;
   border-radius: 8px;
-  border:1px solid darken(@secondaryColor, 5%);
+  border:1px solid darken(@midBackgroundColor, 5%);
   font-size:1.1em;
 } button:hover {
-  background-color: lighten(@secondaryColor, 4%);
+  background-color: lighten(@midBackgroundColor, 4%);
 } button:active {
   position:relative;
   bottom: -1px;
 }
 .inverse-button{
-  background-color:@primaryColor;
-  color: @secondaryColor;
-  border:1px solid darken(@primaryColor, 5%);
+  background-color:@lightOffsetColor;
+  color: @midBackgroundColor;
+  border:1px solid darken(@lightOffsetColor, 5%);
 } .inverse-button:hover {
-  background-color: lighten(@primaryColor, 4%);
+  background-color: lighten(@lightOffsetColor, 4%);
 }
 
 h1 {
@@ -150,15 +150,15 @@ p {
   padding-bottom:0.1em;
 }
 a {
-  color:@primaryColor;
+  color:@lightOffsetColor;
 }
 a:hover {
-  color: lighten(@primaryColor, 7%);
+  color: lighten(@lightOffsetColor, 7%);
 }
 input{
   font-size:1.5em;
   width:90%;
-  border:2px solid black;
+  border:2px solid @darkOffsetColor;
   padding:0;
 }
 
