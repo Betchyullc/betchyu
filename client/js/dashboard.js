@@ -5,3 +5,15 @@ Template.dashboard.noChallenges = function(){
 Template.dashboard.amountOffered = function(){
   return Invites.find({invitee: Meteor.userId(), declined:false, accepted: false}).count();
 };
+Template.dashboard.rendered = function(){
+  $('.notif').each(function(index, item){
+    $(item).children().remove();
+    $(item).append('<span class="amount-notification">'+$(item).data("notifamt")+'</span>');
+    var pos = {
+      position: "absolute",
+      top: $(item).position().top - ($(item).children().height()/2),
+      left: $(item).position().left - ($(item).children().width()/2)
+    };
+    $(item).children().css(pos);
+  });
+};
