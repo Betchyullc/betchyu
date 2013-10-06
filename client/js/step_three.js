@@ -42,16 +42,16 @@ Template.step_three.events({
         return e.id == friend_obj.id;
       }));
     }
-  }
-});
-
-
-Template.step_three.events({
+  },
   'keypress #searchbar':function(e){
-    var search_str = $(e.target).val() + String.fromCharCode(e.which);
+    var search_str = ($(e.target).val() + String.fromCharCode(e.which)).toLowerCase();
     var new_f_list = _.filter(Session.get('friends'), function(e){
-      return e.name.indexOf(search_str) != -1;
+      return e.name.toLowerCase().indexOf(search_str) != -1;
+    });
+    new_f_list = _.sortBy(new_f_list, function(friend){
+      var nm = friend.name.toLowerCase();
+      return nm.indexOf(search_str);
     });
     Session.set('allowed friends', new_f_list);
   }
-})
+});
