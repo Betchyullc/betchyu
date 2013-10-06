@@ -1,9 +1,16 @@
 <template name="landing">
-  <p>Welcome to</p>
-  <h1 class="page-title">Betchyu</h1>
-  <p>I Betchyu Can</p>
-  <hr>
-  <div class="remainder">
-    {{loginButtons}}
+  <div class="landing-head">
+    <img src="/logo.png" class="landing-logo"/>
+    <div class="landing-sign-in">
+      {{loginButtons}}
+    </div>
+  </div>
+  <div class="landing-advert">
+    <span class="highlight">Betchyu</span> is as simple as:
+    <ol class="landing-list">
+      <li>Set Your Goal</li>
+      <li>Pick Your Stake</li>
+      <li>Challenge Your Friends</li>
+    </ol>
   </div>
 </template>
