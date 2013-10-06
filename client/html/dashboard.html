@@ -1,6 +1,7 @@
 <template name="dashboard">
   <div class="dash-body">
     <div class="h-30">
+      <div style="height:30%"/>
     {{#if noChallenges}}
       <img class="img img-lower" src="/favicon.ico"/>
       <button class="bn-lg" id="newGoal" style="padding:5px">Create Bet!</button>
@@ -9,10 +10,13 @@
     {{/if}}
     </div>
     <div class="h-30">
+      <div style="height:30%"/>
       <button class="bn-lg" id="showAcceptedBets">Accepted Bets</button>
     </div>
     <div class="h-30">
+      <div style="height:30%"/>
       <button class="bn-lg" id="showOfferedBets">Offered Bets</button>
+      <span class="amount-notification">{{amountOffered}}</span>
     </div>
   </div>
 </template>
