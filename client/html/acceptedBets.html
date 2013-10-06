@@ -1,0 +1,15 @@
+<template name="acceptedBets">
+  <h1>
+    Accepted Bets
+  </h1>
+  <ul class="bets">
+  {{#each bets}}
+    <li>
+      <img src="{{fbPicURL inviter}}"/>
+      <a href="#" data-bet="{{bet}}" class="viewBet">{{getName inviter}}'s Challenge</a>
+    </li>
+  {{else}}
+    You're not involved in anyone else's bets.
+  {{/each}}
+  </ul>
+</template>

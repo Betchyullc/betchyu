@@ -3,10 +3,10 @@
     <button id="signout"><span class="icon-signout">x</span></button>
     {{#if view 'dashboard'}}
       <span class="username">{{currentUser.profile.name}}</span>
+      <img class="img" src="{{fbPicURL true}}" style="position:absolute;left:0;top:0; margin:9px;"/>
     {{else}}
       <button style="float:left;width:20%" id="dashboard"><span class="icon-home">x</span></button>
-      <button style="float:left" id="newGoal">New Goal</button>
-      <button style="float:left" id="allGoals">My Goals</button>
+      <button style="float:left" id="newGoal">New</button>
     {{/if}}
   </div>
 </template>

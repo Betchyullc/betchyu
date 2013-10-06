@@ -1,0 +1,23 @@
+@import '../variables.lessimport';
+
+button {
+  background-color:@highlightColor;
+  color: @mainColor;
+  padding:5px;
+  margin:0;
+  border-radius: 8px;
+  border:1px solid darken(@highlightColor, 5%);
+  font-size:1.1em;
+} button:hover {
+  background-color: lighten(@highlightColor, 4%);
+} button:active {
+  position:relative;
+  bottom: -1px;
+}
+.inverse-button{
+  background-color:@mainColor;
+  color: @highlightColor;
+  border:1px solid darken(@mainColor, 5%);
+} .inverse-button:hover {
+  background-color: lighten(@mainColor, 4%);
+}

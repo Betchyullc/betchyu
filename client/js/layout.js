@@ -70,6 +70,12 @@ Template.layout.events({
   'click #allGoals': function(){
     Session.set('view', "goals");
   },
+  'click #showAcceptedBets': function(){
+    Session.set('view','acceptedBets');
+  },
+  'click #showOfferedBets': function(){
+    Session.set('view', 'offeredBets');
+  },
   'click #newGoal': function(){
     Session.set('view', "new goal");
     Session.set('step', 1);

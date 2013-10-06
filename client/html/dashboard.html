@@ -1,43 +1,18 @@
 <template name="dashboard">
   <div class="dash-body">
+    <div class="h-30">
     {{#if noChallenges}}
       <img class="img img-lower" src="/favicon.ico"/>
-      <button id="newGoal" style="padding:5px">Create a Challenge</button>
+      <button class="bn-lg" id="newGoal" style="padding:5px">Create Bet!</button>
     {{else}}
-      <img class="img img-lower-profile" src="{{fbPicURL true}}"/>
-      <button id="allGoals" style="padding:9px;">My Goals</button>
+      <button class="bn-lg" id="allGoals" style="padding:9px;">My Bets</button>
     {{/if}}
-    <br>
-    <hr>
-    <div class="dash-link">
-      <a id="showBets" href="#">Bets I've Accepted</a>
     </div>
-    {{#if showBets}}
-      <ul class="bets">
-        {{#each bets}}
-          <li>
-            <img src="{{fbPicURL inviter}}"/>
-            <a href="#" data-bet="{{bet}}" class="viewBet">{{getName inviter}}'s Challenge</a>
-          </li>
-        {{else}}
-          You're not involved in anyone else's bets.
-        {{/each}}
-      </ul>
-    {{/if}}
-    <div class="dash-link">
-      <a id="showInvites" href="#">Bets I'm Offered</a>
+    <div class="h-30">
+      <button class="bn-lg" id="showAcceptedBets">Accepted Bets</button>
     </div>
-    {{#if showInvites}}
-      <ul class="invites">
-        {{#each invites}}
-          <li>
-            <img src="{{fbPicURL inviter}}"/>
-            <a href="#" data-bet="{{bet}}" class="viewBet">{{getName inviter}}'s Challenge</a>
-          </li>
-        {{else}}
-          No one has offered you any bets.
-        {{/each}}
-      </ul>
-    {{/if}}
+    <div class="h-30">
+      <button class="bn-lg" id="showOfferedBets">Offered Bets</button>
+    </div>
   </div>
 </template>
