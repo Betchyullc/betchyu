@@ -10,16 +10,16 @@
       </div>
       <div class="card-amount">
         $
-        <input type="number" class="stake-amount" value="5" min="5" max="100" data-product="amazon"/>
+        <input type="number" class="stake-amount" placeholder="enter amount here" min="5" max="100" data-product="amazon"/>
       </div>
     </div>
   </div>
   {{/constant}}
   {{#if selected}}
-    <p>
+    <p class="help-text">
       This means that the loser will have to pay ${{lose_amt}}, and the winner will get ${{win_amt}} to Amazon.
     </p>
-    <p>
+    <p class="help-text">
       If you lose, we will use this card:
       <div class="credit-card-display">
         {{credit_card}}
