@@ -38,3 +38,4 @@ Template.step_two.events({
 
   }
 });
+Template.step_two.created = function(){ Meteor.shared.logPageView("step_two");};

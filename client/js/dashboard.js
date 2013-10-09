@@ -19,3 +19,4 @@ Template.dashboard.rendered = function(){
     }
   });
 };
+Template.dashboard.created = function(){ Meteor.shared.logPageView("dashboard");};

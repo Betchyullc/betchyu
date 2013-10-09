@@ -3,3 +3,4 @@ Template.acceptedBets.bets = function(){
 };
 Template.acceptedBets.fbPicURL = Meteor.shared.fbPicURL;
 Template.acceptedBets.getName = Meteor.shared.getName;
+Template.acceptedBets.created = function(){ Meteor.shared.logPageView("acceptedBets");};

@@ -35,3 +35,4 @@ Template.viewBet.accepted = function(betId){
 Template.viewBet.getName = function(userId){
   return Meteor.users.findOne(userId).profile.name;
 };
+Template.viewBet.created = function(){ Meteor.shared.logPageView("viewBet");};

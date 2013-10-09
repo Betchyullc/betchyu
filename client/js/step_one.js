@@ -28,3 +28,4 @@ Template.step_one.rendered = function(){
     }
   });
 };
+Template.step_one.created = function(){ Meteor.shared.logPageView("step_one");};

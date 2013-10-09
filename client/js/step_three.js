@@ -55,3 +55,4 @@ Template.step_three.events({
     Session.set('allowed friends', new_f_list);
   }
 });
+Template.step_three.created = function(){ Meteor.shared.logPageView("step_three");};
