@@ -67,24 +67,39 @@ Template.layout.events({
       Session.set('view', 'bet');
     }
   },
+  'click #showMenu': function(){
+    Meteor.shared.showModal('#mainMenuModal');
+  },
   'click #allGoals': function(){
-    Session.set('view', "goals");
+    $('.modal').slideUp(function(){
+      Session.set('view', "goals");
+    });
   },
   'click #showAcceptedBets': function(){
-    Session.set('view','acceptedBets');
+    $('.modal').slideUp(function(){
+      Session.set('view','acceptedBets');
+    });
   },
   'click #showOfferedBets': function(){
-    Session.set('view', 'offeredBets');
+    $('.modal').slideUp(function(){
+      Session.set('view', 'offeredBets');
+    });
   },
   'click #newGoal': function(){
-    Session.set('view', "new goal");
-    Session.set('step', 1);
+    $('.modal').slideUp(function(){
+      Session.set('view', "new goal");
+      Session.set('step', 1);
+    });
   },
   'click #signout': function(){
-    Meteor.logout();
+    $('.modal').slideUp(function(){
+      Meteor.logout();
+    });
   },
   'click #dashboard': function(){
-    Session.set('view', 'dashboard');
+    $('.modal').slideUp(function(){
+      Session.set('view', 'dashboard');
+    });
   },
   'click .viewBet': function(e){
     Session.set('bet', $(e.target).data("bet"));

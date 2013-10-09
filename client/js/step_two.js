@@ -1,5 +1,19 @@
 Template.step_two.credit_card = function(){
-  return 'in progress';
+  var c_i = Session.get('customer-info');
+  if (c_i){
+    return c_i;
+  } else {
+    var bt = Meteor.user().braintree;
+    if (bt){
+      Meteor.call('getCustomer', bt.id, function(e, r){
+        if(e == null)
+          Session.set('customer-info', r);
+      });
+      return 'loading...';
+    } else {
+      return 'you do not have a credit card listed';
+    }
+  }
 };
 Template.step_two.win_amt = function(){
   return Session.get('product').value;

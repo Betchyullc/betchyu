@@ -1,23 +1,5 @@
 <template name="dashboard">
   <div class="dash-body">
-    <div class="h-30">
-      <div style="height:30%"/>
-    {{#if noChallenges}}
-      <img class="img img-lower" src="/favicon.ico"/>
-      <button class="bn-lg" id="newGoal" style="padding:5px">Create Bet!</button>
-    {{else}}
-      <button class="bn-lg" id="allGoals" style="padding:9px;">My Bets</button>
-    {{/if}}
-    </div>
-    <div class="h-30">
-      <div style="height:30%"/>
-      <button class="bn-lg" id="showAcceptedBets">Accepted Bets</button>
-    </div>
-    <div class="h-30">
-      <div style="height:30%"/>
-      <button data-notifamt="{{amountOffered}}" class="bn-lg notif" id="showOfferedBets">
-        Offered Bets
-      </button>
-    </div>
+    Welcome to Betchyu!
   </div>
 </template>
