@@ -1,5 +1,25 @@
 <template name="dashboard">
   <div class="dash-body">
-    Welcome to Betchyu!
+    <h1 style="margin:0">Welcome to Betchyu!</h1>
+    <h2>Update</h2>
+    <div class="block">
+      {{#if need_personal_info}}
+        <div class="block-content">
+          <div class="personal-image-position">
+            <img class="img vert-center" src="{{fbPicURL true}}"/>
+          </div>
+          <div class="info-block">
+            <input type="text" id="heightInfo"/>
+            <input type="text" id="weightInfo"/>
+            <input type="text" id="ageInfo"/>
+          </div>
+        </div>
+      {{/if}}
+      <p class="disclaimer">We promise to keep all this information private.</p>
+    </div>
+
+    <h2>Bet News</h2>
+    <div class="block">
+    </div>
   </div>
 </template>

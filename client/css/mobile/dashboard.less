@@ -1,0 +1,40 @@
+@import '../variables.lessimport';
+
+.block {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+
+  height: 20%;
+
+  background-color: @veryLightGray;
+
+  border-radius: 9px;
+  position: relative;
+}
+.personal-image-position{
+  width: 30%;
+  height: 100%;
+  margin: 0;
+  float: left;
+}
+.info-block{
+  width: 70%;
+  height: 100%;
+  margin: 0;
+  float: right;
+
+  input{
+    border: 0;
+    border-bottom: 1px dashed @black;
+    border-radius: 3px;
+    background-color: lighten(@veryLightGray, 5%);
+    &:focus{
+      background-color: lighten(@veryLightGray, 9%);
+    }
+  }
+}
+.block-content {
+  height: 80%;
+  width: 100%;
+}

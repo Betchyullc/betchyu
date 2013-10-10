@@ -5,6 +5,9 @@ Template.dashboard.noChallenges = function(){
 Template.dashboard.amountOffered = function(){
   return Invites.find({invitee: Meteor.userId(), declined:false, accepted: false}).count();
 };
+Template.dashboard.need_personal_info = function(){
+  return Meteor.user().profile.details == undefined;
+};
 Template.dashboard.rendered = function(){
   $('.notif').each(function(index, item){
     if($(item).data('notifamt') != 0){
