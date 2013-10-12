@@ -23,3 +23,20 @@ Template.dashboard.rendered = function(){
   });
 };
 Template.dashboard.created = function(){ Meteor.shared.logPageView("dashboard");};
+
+Template.dashboard.events({
+  'click #updatePersonalInfo': function(){
+    var height = $('#heightInfo').val();
+    var weight = $('#weightInfo').val();
+    var age = $('#ageInfo').val();
+
+    // do some validation.
+    Meteor.users.update(Meteor.userId(), {
+      $set: { "profile.details": {
+        height: height,
+        weight: weight,
+        age: age
+      } }
+    });
+  }
+});

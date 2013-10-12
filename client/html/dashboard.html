@@ -9,11 +9,24 @@
             <img class="img vert-center" src="{{fbPicURL true}}"/>
           </div>
           <div class="info-block">
-            <input type="text" id="heightInfo"/>
-            <input type="text" id="weightInfo"/>
-            <input type="text" id="ageInfo"/>
+            <div>
+              <input type="text" id="heightInfo" placeholder="FEET' INCHES''"/>
+              Height:
+            </div>
+            <div>
+              <input type="text" id="weightInfo" placeholder="AMOUNT lbs"/>
+              Weight:
+            </div>
+            <div>
+              <input type="text" id="ageInfo" placeholder="YEARS"/>
+              Age:
+            </div>
+            <button id="updatePersonalInfo">Save</button>
           </div>
         </div>
+      {{/if}}
+      {{#if need_bet_update}}
+        Update your bet.
       {{/if}}
       <p class="disclaimer">We promise to keep all this information private.</p>
     </div>
