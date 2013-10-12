@@ -10,5 +10,9 @@ Bets.allow({
            && bet.friends != undefined
            && Array.isArray(bet.friends)
            ;
+  },
+  update: function(uid, origDoc, fields, mod){
+    // should only allow updating 'winner' 
+    return true;
   }
 });

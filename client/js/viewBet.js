@@ -35,4 +35,35 @@ Template.viewBet.accepted = function(betId){
 Template.viewBet.getName = function(userId){
   return Meteor.users.findOne(userId).profile.name;
 };
+Template.viewBet.isFinished = function(){
+  return _.isString(Bets.findOne(Session.get('bet')).winner);
+};
+Template.viewBet.resultOfBet = function(){
+  var win = '<span style="color:green">You Won This Bet!</span>',
+      lose = '<span style="color:red">You Lost This Bet...</span>',
+      bet = Bets.findOne(Session.get('bet'));
+  if (bet.placer == Meteor.userId()){
+    if(bet.winner == 'placer')
+      return win;
+    return lose;
+  }else{
+    if(bet.winner != 'placer')
+      return lose;
+    return win;
+  }
+};
+
 Template.viewBet.created = function(){ Meteor.shared.logPageView("viewBet");};
+
+Template.viewBet.events({
+  'click #winBet':function(){
+    Bets.update(Session.get('bet'), {
+      $set: { winner: 'placer' }
+    });
+  },
+  'click #loseBet':function(){
+    Bets.update(Session.get('bet'), {
+      $set: { winner: 'friends' }
+    });
+  }
+});

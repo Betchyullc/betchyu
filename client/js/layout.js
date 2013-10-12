@@ -20,7 +20,10 @@ Template.layout.events({
       if ( friends != undefined){
         var betId = Bets.insert({
           placer: Meteor.userId(),
-          goal: goal,
+          goal: {
+            value: goal,
+            type: "lbs"
+          },
           days: days,
           product: product,
           friends: friends,

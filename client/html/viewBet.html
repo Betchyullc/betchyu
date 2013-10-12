@@ -1,9 +1,12 @@
 <template name="viewBet">
   {{formatted_owners_bet}}
+  {{#if isFinished}}
+    {{{resultOfBet}}}
+  {{/if}}
   <hr>
   {{#each bet}}
     <div>
-      The Bet: Lose {{goal}} lbs in {{days}} days<br>
+      The Bet: Lose {{goal.value}} {{goal.type}} in {{days}} days<br>
       The Stake: A ${{product.value}} {{product.product}} gift card<br>
       {{days_left this}} days left to go.
     </div>
@@ -31,6 +34,13 @@
     {{#unless isAccepted}}
       <button id="acceptBet">Accept the Bet</button>
       <button class="inverse-button" id="declineBet">Decline the Bet</button>
+    {{else}}
+      {{#unless isFinished}}
+        <div>
+          <button id="winBet">Win the Bet</button>
+          <button class="inverse-button" id="loseBet">Lose the Bet</button>
+        </div>
+      {{/unless}}
     {{/unless}}
   {{/each}}
 </template>
