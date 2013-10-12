@@ -1,5 +1,6 @@
 Template.layout.events({
   'click #nextStep': function(){
+    if (Session.get('view') != 'new goal'){ Meteor.shared.handleAddFriends(); return; }
     var goal = Session.get('goal');
     var days = Session.get('days');
     var product = Session.get('product');

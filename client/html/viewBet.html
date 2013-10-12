@@ -36,6 +36,11 @@
       <button class="inverse-button" id="declineBet">Decline the Bet</button>
     {{else}}
       {{#unless isFinished}}
+        {{#if isOwner}}
+          <div>
+            <button id="addPeopleToBet">Invite more Friends</button>
+          </div>
+        {{/if}}
         <div>
           <button id="winBet">Win the Bet</button>
           <button class="inverse-button" id="loseBet">Lose the Bet</button>

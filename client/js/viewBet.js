@@ -52,10 +52,16 @@ Template.viewBet.resultOfBet = function(){
     return win;
   }
 };
+Template.viewBet.isOwner = function(){
+  return Bets.findOne(Session.get('bet')).placer == Meteor.userId();
+};
 
 Template.viewBet.created = function(){ Meteor.shared.logPageView("viewBet");};
 
 Template.viewBet.events({
+  'click #addPeopleToBet': function(){
+    Session.set('view', 'add friends to bet');
+  },
   'click #winBet':function(){
     Bets.update(Session.get('bet'), {
       $set: { winner: 'placer' }

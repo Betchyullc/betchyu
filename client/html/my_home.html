@@ -17,9 +17,6 @@
       {{#if onStep 3}}
         {{> step_three}}
       {{/if}}
-      {{#if onStep 4}}
-        Your goal is recorded
-      {{/if}}
     {{/if}}
     {{#if view 'bet'}}
       {{> viewBet}}
@@ -29,6 +26,9 @@
     {{/if}}
     {{#if view 'acceptedBets'}}
       {{> acceptedBets}}
+    {{/if}}
+    {{#if view 'add friends to bet'}}
+      {{> step_three}}
     {{/if}}
   </div>
 </template>
