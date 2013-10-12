@@ -26,9 +26,24 @@
         </div>
       {{/if}}
       {{#if need_bet_update}}
-        Update your bet.
+        {{#with bet_to_update}}
+        <div data-_id="{{this._id}}" class="block-content">
+          <div class="dash-goal-title">
+            Your Goal: {{bet_name this}}<br>
+            <span class='highlight'>{{days_left this}}</span> days to go!
+          </div>
+          <div class="dash-goal-update">
+            {{{bet_progress this}}}
+          </div>
+          <button id="updateBetInfo">Save</button>
+        </div>
+        {{/with}}
       {{/if}}
-      <p class="disclaimer">We promise to keep all this information private.</p>
+      {{#if need_nothing}}
+        <p class="dash-info-good">We don't need anything right now!</p>
+      {{else}}
+        <p class="disclaimer">We'll keep this private, don't worry.</p>
+      {{/if}}
     </div>
 
     <h2>Bet News</h2>

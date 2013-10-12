@@ -22,13 +22,7 @@ Template.viewBet.formatted_owners_bet = function(){
     return "My Bet";
   return owner_name + "'s Bet";
 };
-Template.viewBet.days_left = function(bet_obj){
-  var start_date = new Date(bet_obj.createdAt);
-  var end_date = new Date();
-  end_date.setDate(start_date.getDate() + bet_obj.days);
-  var current_date = new Date();
-  return parseInt((end_date - current_date)/1000/60/60/24);
-};
+Template.viewBet.days_left = Meteor.shared.days_left;
 Template.viewBet.accepted = function(betId){
   return Invites.find({bet: betId, accepted: true, declined:false});
 };
@@ -61,7 +55,7 @@ Template.viewBet.the_bet = function(){
     case "calories":
       return "Eat only "+bet.goal.value+" calories per day for "+bet.days+" days";
     case "workout":
-      return "Workout "+bet.goal.value+" times per day for "+bet.days+" days";
+      return "Workout "+bet.goal.value+" times in "+bet.days+" days";
     case "run":
       return "Run "+bet.goal.value+" miles per day for "+bet.days+" days";
     case "lbs":

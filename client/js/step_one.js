@@ -14,7 +14,7 @@ Template.step_one.heading_message = function(){
     case "calories":
       return "Maximum Daily Calories";
     case "workout":
-      return "Workouts per Day";
+      return "Total Workouts";
     case "run":
     default:
       return "Miles to Run per Day";
