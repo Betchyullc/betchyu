@@ -8,6 +8,9 @@
       {{> dashboard}}
     {{/if}}
     {{#if view 'new goal'}}
+      {{#if onStep 0}}
+        {{> pick_bet_type}}
+      {{/if}}
       {{#if onStep 1}}
         {{> step_one}}
       {{/if}}

@@ -4,8 +4,8 @@
   </h1>
   <ul>
   {{#each bets}}
-    <li>
-      <a href="#" data-bet="{{_id}}" class="viewBet">{{goal}} lbs in {{days}} days</a>
+    <li style="text-align:left">
+      <a href="#" data-bet="{{_id}}" class="viewBet">{{bet_name this}}</a>
     </li>
   {{/each}}
   </ul>

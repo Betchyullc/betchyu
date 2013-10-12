@@ -23,7 +23,7 @@ Template.layout.events({
           placer: Meteor.userId(),
           goal: {
             value: goal,
-            type: "lbs"
+            type: Session.get('bet type')
           },
           days: days,
           product: product,
@@ -92,7 +92,7 @@ Template.layout.events({
   'click #newGoal': function(){
     $('.modal').slideUp(function(){
       Session.set('view', "new goal");
-      Session.set('step', 1);
+      Session.set('step', 0);
     });
   },
   'click #signout': function(){

@@ -1,31 +1,45 @@
 <template name="step_one">
   <h2>Step 1 (of 3)</h2>
   <h1>
-    Your weight-loss Goal:
+    {{heading_message}}:
     {{goal}}
   </h1>
   {{#constant}}
-  <div>
-    <span style="float:left">0</span>
-    <span style="float:right">30</span>
-    <div class="slider">
-      <div id="weightLoss" />
+    <div>
+    {{#if type 'lbs'}}
+      <span style="float:left">0</span>
+      <span style="float:right">30</span>
+    {{/if}}
+    {{#if type 'calories'}}
+      <span style="float:left">500</span>
+      <span style="float:right">3000</span>
+    {{/if}}
+    {{#if type 'workout'}}
+      <span style="float:left">1</span>
+      <span style="float:right">30</span>
+    {{/if}}
+    {{#if type 'run'}}
+      <span style="float:left">0</span>
+      <span style="float:right">10</span>
+    {{/if}}
+      <div class="slider">
+        <div id="goal" />
+      </div>
     </div>
-  </div>
   {{/constant}}
 
   <h1>
-    Your Time Frame:
+      Time Frame:
     {{days}}
   </h1>
   {{#constant}}
-  <div>
-    <span style="float:left">0</span>
-    <span style="float:right">30</span>
-    <div class="slider">
-      <div id="timeFrame" />
+    <div>
+      <span style="float:left">0</span>
+      <span style="float:right">30</span>
+      <div class="slider">
+        <div id="timeFrame" />
+      </div>
     </div>
-  </div>
   {{/constant}}
   <button id="nextStep">Next >></button>
 </template>

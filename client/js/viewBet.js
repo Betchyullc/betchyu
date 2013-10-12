@@ -55,6 +55,20 @@ Template.viewBet.resultOfBet = function(){
 Template.viewBet.isOwner = function(){
   return Bets.findOne(Session.get('bet')).placer == Meteor.userId();
 };
+Template.viewBet.the_bet = function(){
+  var bet = Bets.findOne(Session.get('bet'));
+  switch(bet.goal.type){
+    case "calories":
+      return "Eat only "+bet.goal.value+" calories per day for "+bet.days+" days";
+    case "workout":
+      return "Workout "+bet.goal.value+" times per day for "+bet.days+" days";
+    case "run":
+      return "Run "+bet.goal.value+" miles per day for "+bet.days+" days";
+    case "lbs":
+    default:
+      return "Lose "+bet.goal.value+" lbs in "+bet.days+" days"; 
+  }
+};
 
 Template.viewBet.created = function(){ Meteor.shared.logPageView("viewBet");};
 
