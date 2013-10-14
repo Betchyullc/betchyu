@@ -1,29 +1,11 @@
 <template name="dashboard">
   <div class="dash-body">
     <h1 style="margin:0">Welcome to Betchyu!</h1>
-    <h2>Update</h2>
-    <div class="block">
+
+    <h2 class="dash-update-hook">Update</h2>
+    <div class="block dash-update-hook">
       {{#if need_personal_info}}
-        <div class="block-content">
-          <div class="personal-image-position">
-            <img class="img vert-center" src="{{fbPicURL true}}"/>
-          </div>
-          <div class="info-block">
-            <div>
-              <input type="text" id="heightInfo" placeholder="FEET' INCHES''"/>
-              Height:
-            </div>
-            <div>
-              <input type="text" id="weightInfo" placeholder="AMOUNT lbs"/>
-              Weight:
-            </div>
-            <div>
-              <input type="text" id="ageInfo" placeholder="YEARS"/>
-              Age:
-            </div>
-            <button id="updatePersonalInfo">Save</button>
-          </div>
-        </div>
+        {{> needPersonalInfo}}
       {{else}}
         {{#if need_bet_update}}
           {{#with bet_to_update}}
@@ -49,10 +31,39 @@
     </div>
 
     <h2>Bet News</h2>
-    <div class="block">
+    <div class="block dash-news-hook">
       {{#if hasPendingInvites}}
-        You have a challenge!
+        <div class="dash-news-item">
+          You have a challenge!
+        </div>
+      {{else}}
+        <div class="dash-news-item">
+          You have no challenges. Invite your friends to Betchyu, and maybe we can change that.
+        </div>
       {{/if}}
     </div>
   </div>
+</template>
+
+<template name="needPersonalInfo">
+<div class="block-content">
+  <div class="personal-image-position">
+    <img class="img vert-center" src="{{fbPicURL true}}"/>
+  </div>
+  <div class="info-block">
+    <div>
+      <input type="text" id="heightInfo" placeholder="FEET' INCHES''"/>
+      Height:
+    </div>
+    <div>
+      <input type="text" id="weightInfo" placeholder="AMOUNT lbs"/>
+      Weight:
+    </div>
+    <div>
+      <input type="text" id="ageInfo" placeholder="YEARS"/>
+      Age:
+    </div>
+    <button id="updatePersonalInfo">Save</button>
+  </div>
+</div>
 </template>

@@ -3,6 +3,9 @@ Template.dashboard.need_nothing = function(){
          || Template.dashboard.need_bet_update());
 };
 Template.dashboard.fbPicURL = Meteor.shared.fbPicURL;
+Template.dashboard.hasPendingInvites = function(){
+  return Template.dashboard.amountOffered() > 0;
+};
 Template.dashboard.amountOffered = function(){
   return Invites.find({invitee: Meteor.userId(), declined:false, accepted: false}).count();
 };
@@ -77,3 +80,13 @@ Template.dashboard.events({
     }});
   }
 });
+
+Template.dashboard.rendered = function(){
+  if (Template.dashboard.need_nothing()){
+    $('.dash-update-hook').delay(1500).slideUp(function(){
+      $('.dash-news-hook').animate({
+        height: '75%'
+      }, 1500);
+    });
+  }
+}
