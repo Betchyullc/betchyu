@@ -1,29 +1,15 @@
 <template name="step_two">
   <h1>Step 2 (of 3)</h1>
   <h2>The Stake</h2>
-  <p style="text-align:left">Gift Card:</p>
-  {{#constant}}
-  <div class="card-container">
-    <div class="card-box amazon">
-      <div class="card-title">
-        Amazon
-      </div>
-      <div class="card-amount">
-        $
-        <input type="number" class="stake-amount" placeholder="enter amount here" min="5" max="100" data-product="amazon"/>
-      </div>
-    </div>
-  </div>
-  {{/constant}}
+  <ul>
+    <li class="{{isSelected 'A Dinner'}}">A Dinner</li>
+    <li class="{{isSelected '$10'}}">$10</li>
+    <li class="{{isSelected 'A new shirt'}}">A new shirt</li>
+    <li class="{{isSelected 'Something else: '}}">Something else: <input type="text" id="stake"/></li>
+  </ul>
   {{#if selected}}
     <p class="help-text">
-      This means that the loser will have to pay ${{lose_amt}}, and the winner will get ${{win_amt}} to Amazon.
-    </p>
-    <p class="help-text">
-      If you lose, we will use this card:
-      <div class="credit-card-display">
-        {{credit_card}}
-      </div>
+      Keep in mind that we will not enforce your payment of this stake. IT's on you and your friends to be honest--we just help you keep track of things.
     </p>
   {{/if}}
   <button id="nextStep">Next >></button>
