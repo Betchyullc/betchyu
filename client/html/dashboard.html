@@ -24,21 +24,23 @@
             <button id="updatePersonalInfo">Save</button>
           </div>
         </div>
-      {{/if}}
-      {{#if need_bet_update}}
-        {{#with bet_to_update}}
-        <div data-_id="{{this._id}}" class="block-content">
-          <div class="dash-goal-title">
-            Your Goal: {{bet_name this}}<br>
-            <span class='highlight'>{{days_left this}}</span> days to go!
+      {{else}}
+        {{#if need_bet_update}}
+          {{#with bet_to_update}}
+          <div data-_id="{{this._id}}" class="block-content">
+            <div class="dash-goal-title">
+              Your Goal: {{bet_name this}}<br>
+              <span class='highlight'>{{days_left this}}</span> days to go!
+            </div>
+            <div class="dash-goal-update">
+              {{{bet_progress this}}}
+            </div>
+            <button id="updateBetInfo">Save</button>
           </div>
-          <div class="dash-goal-update">
-            {{{bet_progress this}}}
-          </div>
-          <button id="updateBetInfo">Save</button>
-        </div>
-        {{/with}}
+          {{/with}}
+        {{/if}}
       {{/if}}
+
       {{#if need_nothing}}
         <div class="dash-info-good">We don't need anything right now!</div>
       {{else}}
@@ -48,6 +50,9 @@
 
     <h2>Bet News</h2>
     <div class="block">
+      {{#if hasPendingInvites}}
+        You have a challenge!
+      {{/if}}
     </div>
   </div>
 </template>

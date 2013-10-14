@@ -5,32 +5,36 @@
   {{/if}}
   <hr>
   {{#each bet}}
-    <div>
+    <div class="bet-header">
       The Bet: {{the_bet}}<br>
       The Stake: {{product.value}}<br>
       {{days_left this}} days left to go.
     </div>
-    <hr>
-    <div style="text-align:left">
-      On Board:
+    <div class="bet-friends-container">
+      <div class="bet-onBoard-list">
+        <div class="bet-onBoard-list-head">
+          On Board:
+        </div>
+        {{#each accepted this._id}}
+          {{getName invitee}}<br>
+        {{/each}}
+      </div>
+      <div class="bet-invited-list">
+        <div class="bet-invited-list-head">
+          Invited:
+        </div>
+        <ul>
+        {{#each friends}}
+          <li>
+            {{this.name}}
+            {{#if needToInvite this.id}}
+              <button data-fbid="{{this.id}}" class="inviteToBetchyu">Invite to Betchyu</button>
+            {{/if}}
+          </li>
+        {{/each}}
+        </ul>
+      </div>
     </div>
-    {{#each accepted this._id}}
-      {{getName invitee}}<br>
-    {{/each}}
-    <hr>
-    <div style="text-align:left">
-      Invited:
-    </div>
-    <ul style="text-align:left">
-    {{#each friends}}
-      <li>
-        {{this.name}}
-        {{#if needToInvite this.id}}
-          <button data-fbid="{{this.id}}" class="inviteToBetchyu">Invite to Betchyu</button>
-        {{/if}}
-      </li>
-    {{/each}}
-    </ul>
     {{#unless isAccepted}}
       <button id="acceptBet">Accept the Bet</button>
       <button class="inverse-button" id="declineBet">Decline the Bet</button>
