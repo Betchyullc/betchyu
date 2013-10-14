@@ -2,7 +2,8 @@
 var autopublishFields = {
   loggedInUser: ['profile', 'username', 'emails', 'services.facebook'],
   otherUsers: [
-    'profile.name', 'username', 'services.facebook.id', 'services.facebook.username', 'services.facebook.gender'
+    'profile.name', 'username',
+    'services.facebook.id', 'services.facebook.username', 'services.facebook.gender', 'services.facebook.name'
   ]
 };
 
@@ -33,4 +34,43 @@ Meteor.publish(null, function () {
       {fields: toFieldSelector(autopublishFields.otherUsers)});
   else
     return null;
+});
+
+
+//////////
+// Bets //
+//////////
+
+// Contingent on login, publish all the Bets that are relevant to the user
+Meteor.publish(null, function(){
+  if (this.userId){
+    var usr = Meteor.users.findOne(this.userId);
+    return Bets.find({
+      $or: [
+        {placer: this.userId},  //the user placed the bet
+        {friends: { $elemMatch:{ id: usr.services.facebook.id} }}  // or he was challenged in it.
+      ]
+    });
+  } else {
+    return null;
+  }
+});
+
+
+/////////////
+// Invites //
+/////////////
+
+// Contingent on login, publish all the Invites that are relevant to the user
+Meteor.publish(null, function(){
+  if (this.userId){
+    return Invites.find({
+      $or: [
+        {inviter: this.userId},  //the user placed the bet
+        {invitee: this.userId}  // or he was challenged in it.
+      ]
+    });
+  } else {
+    return null;
+  }
 });
