@@ -4,10 +4,10 @@
     {{{resultOfBet}}}
   {{/if}}
   <hr>
-  {{#with bet}}
+  {{#each bet}}
     <div>
       The Bet: {{the_bet}}<br>
-      The Stake: A ${{product.value}} {{product.product}} gift card<br>
+      The Stake: {{product.value}}<br>
       {{days_left this}} days left to go.
     </div>
     <hr>
@@ -47,5 +47,5 @@
         </div>
       {{/unless}}
     {{/unless}}
-  {{/with}}
+  {{/each}}
 </template>
