@@ -26,9 +26,10 @@
         <ul>
         {{#each friends}}
           <li>
-            {{this.name}}
             {{#if needToInvite this.id}}
-              <button data-fbid="{{this.id}}" class="inviteToBetchyu">Invite to Betchyu</button>
+              <button data-fbid="{{this.id}}" class="inviteToBetchyu">{{this.name}}</button>
+            {{else}}
+              {{this.name}}
             {{/if}}
           </li>
         {{/each}}
