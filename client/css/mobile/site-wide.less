@@ -4,7 +4,7 @@
 .container{
   width: 100%;
   height: 100%;
-  background-color: lighten(@backgroundColor,19%);
+  background-color: lighten(@highlightColor,19%);
 }
 .step-container{
   width: 100%;
@@ -36,19 +36,25 @@
 .h-30{
   height: 30%;
 }
+.p11px{
+  padding: 11px;
+}
 /* colors */
 .highlight {
-  color:@highlightColor;
+  color: @backgroundColor;
+}
+.dark {
+  color: @highlightColor;
 }
 .product-pick{
-  background-color: @highlightColor;
+  background-color: @backgroundColor;
 }
 
 /* TOOLBAR (is on most pages...) */
 .toolbar {
   position: relative;
   background-color:@backgroundColor;
-  border-bottom: 4px solid lighten(@backgroundColor, 19%);
+  border-bottom: 4px solid @highlightColor;
   height: 10%;
   color: darken(@mainColor, 9%);
   button {
@@ -61,6 +67,12 @@
       background-color:@highlightColor;
       border: none;
       border-radius: 0;
+    }
+  }
+  img {
+    background: transparent;
+    &:hover {
+      background-color: darken(@backgroundColor, 5%);
     }
   }
 }

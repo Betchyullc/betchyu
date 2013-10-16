@@ -92,7 +92,8 @@
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#faffef', endColorstr='#faffef',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
 .menu-head{
-  background-color: lighten(@backgroundColor, 19%);
+  background-color: @highlightColor;
+  color: @backgroundColor;
 }
 .menu-body{
   text-align: left;
@@ -105,5 +106,8 @@
     width: 95%;
     border-top: 1px solid @gray;
     border-bottom: 1px solid @gray;
+    &:hover {
+      background-color: @backgroundColor;
+    }
   }
 }

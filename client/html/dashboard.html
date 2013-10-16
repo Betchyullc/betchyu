@@ -6,14 +6,20 @@
     <div class="block dash-update-hook">
       {{#if need_personal_info}}
         {{> needPersonalInfo}}
+        <p class="disclaimer">We'll keep this private, don't worry.</p>
       {{else}}
         {{#if need_bet_update}}
           {{#with bet_to_update}}
           <div data-_id="{{this._id}}" class="block-content">
             <div class="dash-goal-title">
-              Your Goal: {{bet_name this}}<br>
-              <span class='highlight'>{{days_left this}}</span> days to go!
+              <div class="dash-goal-title-title">
+                {{bet_name this}}
+              </div>
+              <div class="p11px">
+                <span class="dash-goal-title-label">Goal</span>
+              </div>
             </div>
+            <span class='dash-goal-days-left' title="days left">{{days_left this}}</span>
             <div class="dash-goal-update">
               {{{bet_progress this}}}
             </div>
@@ -25,8 +31,6 @@
 
       {{#if need_nothing}}
         <div class="dash-info-good">We don't need anything right now!</div>
-      {{else}}
-        <p class="disclaimer">We'll keep this private, don't worry.</p>
       {{/if}}
     </div>
 

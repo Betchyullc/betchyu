@@ -1,6 +1,6 @@
 /*Colors*/
 @mainColor:#f8f8f8;
-@backgroundColor:#005EB2;
+@backgroundColor:#B44747;
 
 @black:#111;
 @darkGray:#555;
@@ -13,7 +13,7 @@
 @midBackgroundColor:#F6D87F;
 @darkBackgroundColor:#F6BB01;
 
-@highlightColor: #FA7D12;
+@highlightColor: #303030;
 
 @lightOffsetColor:#66A7AB;
 @darkOffsetColor:#406467;

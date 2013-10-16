@@ -10,8 +10,11 @@
   background-color: @veryLightGray;
 
   border-radius: 9px;
+  border: 2px solid @highlightColor;
   position: relative;
   overflow: hidden;
+
+  text-align: left;
 }
 .personal-image-position{
   width: 30%;
@@ -62,4 +65,40 @@
   /* Don't show shadows when selecting text */
   &:-moz-selection { background: #5af; color: #fff; text-shadow: none; }
   &:selection { background: #5af; color: #fff; text-shadow: none; }
+
+  text-align: center;
+}
+.dash-goal-title{
+  background: rgba(255,255,255,0.8);
+  border-bottom: 1px solid black;
+  position: relative;
+  text-align: left;
+}
+.dash-goal-title-label{
+/*  position: absolute;
+  left: 0;*/
+  border-right: 1px solid black;
+  padding: 11px;
+}
+.dash-goal-title-title{
+  float: right;
+  padding: 11px;
+}
+.dash-goal-days-left {
+  background-color: lighten(@veryLightGray, 5%);
+  color: @backgroundColor;
+  float: left;
+  padding: 5px;
+  margin: 5px;
+  border: 1px solid @highlightColor;
+}
+.dash-goal-update {
+  width: 80%;
+  position: absolute;
+  right: 0;
+}
+#updateBetInfo {
+  position: absolute;
+  bottom: 9px;
+  left: 30%;
 }

@@ -28,7 +28,10 @@ Template.dashboard.bet_to_update = function(){
   return Bets.findOne({
     placer: Meteor.userId(),
     winner: undefined,
-    update: undefined
+    $or: [
+      { update: undefined},
+      { "update.updatedAt": {$lt: (new Date().getTime()) - (1000*60*60*24)}}
+    ]
   });
 };
 Template.dashboard.days_left = Meteor.shared.days_left;
