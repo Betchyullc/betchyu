@@ -19,7 +19,7 @@ Template.viewBet.formatted_owners_bet = function(){
   var bet_obj = Bets.findOne(Session.get('bet'));
   var owner_name = Meteor.users.findOne(bet_obj.placer).profile.name;
   if (owner_name == Meteor.user().profile.name)
-    return "My Bet";
+    return "My Goal";
   return owner_name + "'s Bet";
 };
 Template.viewBet.days_left = Meteor.shared.days_left;
