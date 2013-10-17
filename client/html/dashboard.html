@@ -1,51 +1,10 @@
 <template name="dashboard">
   <div class="dash-body">
-    <h1 style="margin:0">Welcome to Betchyu!</h1>
-
-    <h2 class="dash-update-hook">Update</h2>
-    <div class="block dash-update-hook">
-      {{#if need_personal_info}}
-        {{> needPersonalInfo}}
-        <p class="disclaimer">We'll keep this private, don't worry.</p>
-      {{else}}
-        {{#if need_bet_update}}
-          {{#with bet_to_update}}
-          <div data-_id="{{this._id}}" class="block-content">
-            <div class="dash-goal-title">
-              <div class="dash-goal-title-title">
-                {{bet_name this}}
-              </div>
-              <div class="p11px">
-                <span class="dash-goal-title-label">Goal</span>
-              </div>
-            </div>
-            <span class='dash-goal-days-left' title="days left">{{days_left this}}</span>
-            <div class="dash-goal-update">
-              {{{bet_progress this}}}
-            </div>
-            <button id="updateBetInfo">Save</button>
-          </div>
-          {{/with}}
-        {{/if}}
-      {{/if}}
-
-      {{#if need_nothing}}
-        <div class="dash-info-good">We don't need anything right now!</div>
-      {{/if}}
-    </div>
-
-    <h2>Bet News</h2>
-    <div class="block dash-news-hook">
-      {{#if hasPendingInvites}}
-        <div class="dash-news-item">
-          You have a challenge!
-        </div>
-      {{else}}
-        <div class="dash-news-item">
-          No one has challenged you. Invite your friends to Betchyu, and maybe we can change that.
-        </div>
-      {{/if}}
-    </div>
+    <button class="big allGoals">My Goals</button>
+    <div style="height:17%; width:100%;"/>
+    <button class="big myBets">My Bets</button>
+    <div style="height:17%; width:100%;"/>
+    <button class="big newGoal">Create Goal</button>
   </div>
 </template>
 

@@ -1,0 +1,12 @@
+<template name="myGoals">
+  <h1>
+    My Goals
+  </h1>
+  <ul>
+  {{#each bets}}
+    <li style="text-align:left">
+      <a href="#" data-bet="{{_id}}" class="viewBet">{{bet_name this}}</a>
+    </li>
+  {{/each}}
+  </ul>
+</template>

@@ -74,7 +74,7 @@ Template.layout.events({
   'click #showMenu': function(){
     Meteor.shared.showModal('#mainMenuModal');
   },
-  'click #allGoals': function(){
+  'click .allGoals': function(){
     $('.modal').slideUp(function(){
       Session.set('view', "goals");
     });
@@ -89,7 +89,12 @@ Template.layout.events({
       Session.set('view', 'offeredBets');
     });
   },
-  'click #newGoal': function(){
+  'click .myBets': function(){
+    $('.modal').slideUp(function(){
+      Session.set('view', "my bets");
+    });
+  },
+  'click .newGoal': function(){
     $('.modal').slideUp(function(){
       Session.set('view', "new goal");
       Session.set('step', 0);
