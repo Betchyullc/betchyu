@@ -6,3 +6,17 @@
     Invites.remove(e._id);
   });
 });*/
+Meteor.methods({
+  declineOtherInvites: function(invId){
+    var inv = Invites.findOne(invId);
+    
+    Invites.update({
+      _id: {$ne: invId},
+      bet: inv.bet
+    },{
+      $set: {declined: true}
+    }, {
+      multi: true
+    });
+  }
+});

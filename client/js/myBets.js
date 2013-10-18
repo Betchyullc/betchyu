@@ -26,6 +26,10 @@ Template.myBets.events({
         declined: false
       }
     });
+
+    // Prevents other users from also accepting on this bet.
+    // a design desision to make payouts easier.
+    Meteor.call('declineOtherInvites', invId);
   },
   'click .declineBet': function(e){
     var invId = $(e.target).data('invite');
