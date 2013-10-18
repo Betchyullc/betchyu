@@ -33,3 +33,10 @@ button.big {
 
   display: block;
 }
+button.bright{
+  background-color:@backgroundColor;
+  border:1px solid darken(@backgroundColor, 8%);
+  &:hover{
+    background-color: lighten(@backgroundColor, 4%);
+  }
+}
