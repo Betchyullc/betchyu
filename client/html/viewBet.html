@@ -3,11 +3,11 @@
   {{#if isFinished}}
     {{{resultOfBet}}}
   {{/if}}
-  {{#each bet}}
+  {{#with bet}}
     <div class="bet-header">
       The Bet: {{the_bet}}<br>
-      The Stake: {{product.product}}<br>
-      {{days_left this}} days left to go.
+      Days Left: {{days_left this}}<br>
+      The Stake: {{product.product}}
     </div>
     <h2>Friends</h2>
     <div class="bet-friends-container">
@@ -36,37 +36,32 @@
         </ul>
       </div>
     </div>
-    <h2 class="dash-update-hook">Update</h2>
-    <div class="block dash-update-hook">
-      {{#if need_personal_info}}
-        {{> needPersonalInfo}}
-        <p class="disclaimer">We'll keep this private, don't worry.</p>
-      {{else}}
+
+    {{#if isOwner}}
+      <h2 class="dash-update-hook">Update</h2>
+      <div class="block dash-update-hook">
         {{#if need_bet_update}}
-          {{#with bet_to_update}}
           <div data-_id="{{this._id}}" class="block-content">
-            <div class="dash-goal-title">
-              <div class="dash-goal-title-title">
-                {{bet_name this}}
-              </div>
-              <div class="p11px">
-                <span class="dash-goal-title-label">Goal</span>
-              </div>
-            </div>
-            <span class='dash-goal-days-left' title="days left">{{days_left this}}</span>
             <div class="dash-goal-update">
               {{{bet_progress this}}}
             </div>
             <button id="updateBetInfo">Save</button>
           </div>
-          {{/with}}
+        {{else}}
+          <div class="dash-info-good">We don't need anything right now!</div>
         {{/if}}
-      {{/if}}
+      </div>
+    {{else}}
+      <h2>Progress</h2>
+      <div class="block">
+        {{#if this.update}}
+          {{{days_from_bet this}}}
+        {{else}}
+          <div class="dash-info-good">There have been no updates...</div>
+        {{/if}}
+      </div>
+    {{/if}}
 
-      {{#if need_nothing}}
-        <div class="dash-info-good">We don't need anything right now!</div>
-      {{/if}}
-    </div>
     {{#unless isAccepted}}
       <button id="acceptBet">Accept the Bet</button>
       <button class="inverse-button" id="declineBet">Decline the Bet</button>
@@ -77,11 +72,7 @@
             <button id="addPeopleToBet">Invite more Friends</button>
           </div>
         {{/if}}
-        <div>
-          <button id="winBet">Win the Bet</button>
-          <button class="inverse-button" id="loseBet">Lose the Bet</button>
-        </div>
       {{/unless}}
     {{/unless}}
-  {{/each}}
+  {{/with}}
 </template>
