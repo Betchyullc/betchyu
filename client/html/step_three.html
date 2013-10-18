@@ -6,12 +6,27 @@
   <div style="height:8%">
     <input type="text" id="searchbar"/>
   </div>
-  <div class="friendslist-container">
-    <ul id="friend">
+  
+  <div class="friendslist-container bet-friends-container">
+    <div class="bet-onBoard-list">
+      <div class="bet-onBoard-list-head">
+        Selected:
+      </div>
+      {{#each selectedFriends}}
+        {{name}}<br>
+      {{/each}}
+    </div>
+    <div class="bet-invited-list">
+      <div class="bet-invited-list-head">
+        Friends:
+      </div>
+      <ul>
       {{#each friends}}
         <li class="{{selected name}}">{{name}}</li>
       {{/each}}
-    </ul>
+      </ul>
+    </div>
   </div>
+
   <button id="nextStep">Finish</button>
 </template>
