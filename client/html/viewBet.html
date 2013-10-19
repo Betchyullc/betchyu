@@ -42,9 +42,7 @@
       <div class="block dash-update-hook">
         {{#if need_bet_update}}
           <div data-_id="{{this._id}}" class="block-content">
-            <div class="dash-goal-update">
-              {{{bet_progress this}}}
-            </div>
+            {{{bet_progress this}}}
             <button id="updateBetInfo">Save</button>
           </div>
         {{else}}

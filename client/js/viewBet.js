@@ -81,12 +81,19 @@ var makeInputHTML = function(bet){
   var then = new Date(bet.createdAt);
   var days_passed = Math.ceil( (now - then)/1000/60/60/24);
   var inputHTML = "";
+  var headHTML = "<div class='update-day-container'>";
   for (var i = 0; (i < days_passed && i < bet.days); i++){
     now.setDate(then.getDate()+i);
     if( bet.update  && bet.update.done_each_day[i]){
-      inputHTML += "<input title='"+now.toDateString()+"' type='text' class='dash-input' value='"+bet.update.done_each_day[i]+"'/>";
+      inputHTML += headHTML+ 
+                    "<strong>"+now.toDateString()+"</strong>"+
+                    "<input title='"+now.toDateString()+"' type='text' class='dash-input' value='"+bet.update.done_each_day[i]+"'/>"+
+                  "</div>";
     } else{
-      inputHTML += "<input title='"+now.toDateString()+"' type='text' class='dash-input'/>";
+      inputHTML += headHTML +
+                     "<strong>"+now.toDateString()+"</strong>"+
+                     "<input title='"+now.toDateString()+"' type='text' class='dash-input'/>"+
+                   "</div>";
     }
   }
   return inputHTML;
