@@ -1,3 +1,8 @@
+Template.myGoals.activeBet = function(bet){
+  if( Meteor.shared.days_left(bet) == "ZERO")
+    return false;
+  return true;
+};
 Template.myGoals.bets = function() {
   return Bets.find({placer: Meteor.userId()});
 };

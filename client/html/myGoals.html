@@ -6,7 +6,13 @@
   <div class="bet-blocks-container">
   {{#each bets}}
     <div class="bet-block">
-      <button data-bet="{{_id}}" class="viewBet">Update</button>
+      <button data-bet="{{_id}}" class="viewBet">
+        {{#if activeBet this}}
+          Update
+        {{else}}
+          View
+        {{/if}}
+      </button>
       <div class="bet-description">
         Goal: {{bet_name this}}<br>
         Time Left: {{days_left this}} days
