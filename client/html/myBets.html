@@ -2,11 +2,46 @@
   <h1>
     My Bets
   </h1>
-  <ul>
-  {{#each bets}}
-    <li style="text-align:left">
-      <a href="#" data-bet="{{_id}}" class="viewBet">{{bet_name this}}</a>
-    </li>
-  {{/each}}
-  </ul>
+  
+  <div class="bet-blocks-container">
+    {{#each acceptedBets}}
+      <div class="bet-block">
+        {{#if wonBet this.bet}}
+          <div class="bet-block-win-notif">
+            You Won!
+          </div>
+        {{/if}}
+        {{#if lostBet this.bet}}
+          <div class="bet-block-lose-notif">
+            You Lost
+          </div>
+        {{/if}}
+        <div class="bet-description">
+          <img src="{{fbPicURL inviter}}"/>
+          {{getName inviter}}'s Bet: <a href="#" class="viewBet" data-bet="{{bet}}">{{bet_name this}}</a><br>
+          Time Left: {{days_left this}} days
+        </div>
+      </div>
+    {{else}}
+      <h2>You have no ongoing Bets :(</h2>
+    {{/each}}
+    {{#if pendingBets}}
+      <h2>New Bets!</h2>
+    {{/if}}
+
+
+    {{#each offeredBets}}
+      <div class="bet-block">
+        <button data-invite="{{_id}}" class="declineBet">Decline</button>
+        <button data-invite="{{_id}}" class="acceptBet bright">Betchyu!</button>
+        <div class="bet-description">
+          <img src="{{fbPicURL inviter}}"/>
+          {{getName inviter}}'s Bet: {{bet_name this}}<br>
+          Time Left: {{days_left this}} days
+        </div>
+      </div>
+    {{else}}
+      <h2>You have no new Bets :(</h2>
+    {{/each}}
+  </div>
 </template>

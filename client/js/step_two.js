@@ -54,9 +54,8 @@ Template.step_two.events({
   },
   'change #stake': function(e){
     var val = $('#stake').val();
-    var prod = Session.get('product').product;
     Session.set('product', {
-      product: prod,
+      product: "Something else: ",
       value: val
     });
   },

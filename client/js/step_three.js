@@ -1,3 +1,11 @@
+// Helpers
+Template.step_three.selectedFriends = function(){
+  if (Session.get('view') == 'new goal'){
+    return Session.get('selected friends');
+  } else {
+    return Bets.findOne(Session.get('bet')).friends;
+  }
+};
 Template.step_three.formatted_num_selected = function(){
   var len = Session.get('selected friends').length;
   if (len == 0){
@@ -26,6 +34,9 @@ Template.step_three.friends = function(){
     return Session.get('allowed friends');
   }
 };
+
+
+// EVENTS
 Template.step_three.events({
   'click li': function(e){
     if(Session.get('selected friends') == undefined) Session.set('selected friends', []);
@@ -55,4 +66,5 @@ Template.step_three.events({
     Session.set('allowed friends', new_f_list);
   }
 });
+//Logging nonsense
 Template.step_three.created = function(){ Meteor.shared.logPageView("step_three");};

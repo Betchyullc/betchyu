@@ -1,31 +1,36 @@
 @import '../variables.lessimport';
 
+.bet-header {
+  text-align: left;
+  padding: 9px;
+}
 .bet-friends-container{
-  width: 100%;
-  height: 700px;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
 
   background-color: @veryLightGray;
-  border: 1px solid @backgroundColor;
+  border: 2px solid @highlightColor;
+  border-radius: 9px;
 }
 .bet-onBoard-list{
   text-align: left;
   width: 50%;
   height: 100%;
-  float: left;
-
-  border-right: 1px solid @backgroundColor;
+  float: right;
 }
 .bet-onBoard-list-head{
   background-color: lighten(@veryLightGray, 5%);
-
   border: 1px solid @black;
 }
 .bet-invited-list{
   text-align: left;
-  width: 49%;
-  height: 100%;
-  float: right;
+  width: 47%;
+  height: 95%;
   overflow: auto;
+
+  border-right: 1px solid @highlightColor;
+  padding: 5px;
 
   ul{
     list-style-type: none;
@@ -40,4 +45,12 @@
       background-color: @white;
     }
   }
+}
+.bet-invited-list-head {
+  .bet-onBoard-list-head;
+}
+.redo-update {
+  float: right;
+  font-size: 0.7em;
+  color: @backgroundColor;
 }

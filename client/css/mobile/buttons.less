@@ -21,3 +21,22 @@ button {
 } .inverse-button:hover {
   background-color: lighten(@mainColor, 4%);
 }
+
+button.big {
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5%;
+
+  padding-top: 7%;
+  padding-bottom: 7%;
+
+  display: block;
+}
+button.bright{
+  background-color:@backgroundColor;
+  border:1px solid darken(@backgroundColor, 8%);
+  &:hover{
+    background-color: lighten(@backgroundColor, 4%);
+  }
+}

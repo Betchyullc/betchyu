@@ -2,7 +2,7 @@
   <div class="step-container">
     {{> toolbar}}
     {{#if view 'goals'}}
-      {{> myBets}}
+      {{> myGoals}}
     {{/if}}
     {{#if view 'dashboard'}}
       {{> dashboard}}
@@ -29,6 +29,9 @@
     {{/if}}
     {{#if view 'acceptedBets'}}
       {{> acceptedBets}}
+    {{/if}}
+    {{#if view 'my bets'}}
+      {{> myBets}}
     {{/if}}
     {{#if view 'add friends to bet'}}
       {{> step_three}}
