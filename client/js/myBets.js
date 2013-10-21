@@ -1,3 +1,11 @@
+Template.myBets.lostBet = function(betId){
+  var bet = Bets.findOne(betId);
+  return bet.winner == "placer";
+};
+Template.myBets.wonBet = function(betId){
+  var bet = Bets.findOne(betId);
+  return bet.winner == "friends";
+};
 Template.myBets.acceptedBets = function(){
   return Invites.find({invitee: Meteor.userId(), declined:false, accepted: true});
 };

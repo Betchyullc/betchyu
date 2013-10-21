@@ -6,6 +6,16 @@
   <div class="bet-blocks-container">
     {{#each acceptedBets}}
       <div class="bet-block">
+        {{#if wonBet this.bet}}
+          <div class="bet-block-win-notif">
+            You Won!
+          </div>
+        {{/if}}
+        {{#if lostBet this.bet}}
+          <div class="bet-block-lose-notif">
+            You Lost
+          </div>
+        {{/if}}
         <div class="bet-description">
           <img src="{{fbPicURL inviter}}"/>
           {{getName inviter}}'s Bet: <a href="#" class="viewBet" data-bet="{{bet}}">{{bet_name this}}</a><br>

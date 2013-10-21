@@ -1,5 +1,8 @@
+Template.myGoals.wonBet = function(bet){
+  return bet.winner == "placer";
+};
 Template.myGoals.activeBet = function(bet){
-  if( Meteor.shared.days_left(bet) == "ZERO")
+  if( Meteor.shared.days_left(bet) == "ZERO" && bet.winner)
     return false;
   return true;
 };

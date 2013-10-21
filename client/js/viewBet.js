@@ -157,12 +157,12 @@ Template.viewBet.days_from_bet = function(bet){
 
 Template.viewBet.created = function(){ Meteor.shared.logPageView("viewBet");};
 
-var winTheBet = function(bet){
+var winTheBet = function(){
   Bets.update(Session.get('bet'), {
     $set: { winner: 'placer' }
   });
 };
-var loseTheBet = function(bet){
+var loseTheBet = function(){
   Bets.update(Session.get('bet'), {
     $set: { winner: 'friends' }
   });
@@ -201,32 +201,32 @@ Template.viewBet.events({
       });
       var now = new Date().getTime();
       var then = new Date(bet.createdAt).getTime();
-      var betIsOver = ((now - (bet.days*24*60860*1000)) > then);
+      var betIsOver = ((now - (bet.days*24*60*60*1000)) > then);
       switch(bet.goal.type){
         case "calories":
           if ((bet.goal.value * bet.days) >= bet_total)
-            winTheBet(bet);
+            winTheBet();
           else if (betIsOver)
-            loseTheBet(bet);
+            loseTheBet();
           break;
         case "workout":
-          if (bet.goal.value >= bet_total)
-            winTheBet(bet);
+          if (bet.goal.value <= bet_total)
+            winTheBet();
           else if (betIsOver)
-            loseTheBet(bet);
+            loseTheBet();
           break;
         case "run":
-          if ((bet.goal.value * bet.days) >= bet_total)
-            winTheBet(bet);
+          if ((bet.goal.value * bet.days) <= bet_total)
+            winTheBet();
           else if (betIsOver)
-            loseTheBet(bet);
+            loseTheBet();
           break;
         case "lbs":
         default:
-          if (bet.goal.value >= bet_total)
-            winTheBet(bet);
+          if (bet.goal.value <= bet_total)
+            winTheBet();
           else if (betIsOver)
-            loseTheBet(bet);
+            loseTheBet();
           break;
       }
     }
