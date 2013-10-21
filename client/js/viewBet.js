@@ -203,33 +203,34 @@ Template.viewBet.events({
       });
       var now = new Date().getTime();
       var then = new Date(bet.createdAt).getTime();
-      var betIsOver = ((now - (bet.days*24*60*60*1000)) > then);
-      switch(bet.goal.type){
-        case "calories":
-          if ((bet.goal.value * bet.days) >= bet_total)
-            winTheBet();
-          else if (betIsOver)
-            loseTheBet();
-          break;
-        case "workout":
-          if (bet.goal.value <= bet_total)
-            winTheBet();
-          else if (betIsOver)
-            loseTheBet();
-          break;
-        case "run":
-          if ((bet.goal.value * bet.days) <= bet_total)
-            winTheBet();
-          else if (betIsOver)
-            loseTheBet();
-          break;
-        case "lbs":
-        default:
-          if (bet.goal.value <= bet_total)
-            winTheBet();
-          else if (betIsOver)
-            loseTheBet();
-          break;
+      if ((now - (bet.days*24*60*60*1000)) > then) {
+        switch(bet.goal.type){
+          case "calories":
+            if ((bet.goal.value * bet.days) >= bet_total)
+              winTheBet();
+            else
+              loseTheBet();
+            break;
+          case "workout":
+            if (bet.goal.value <= bet_total)
+              winTheBet();
+            else
+              loseTheBet();
+            break;
+          case "run":
+            if ((bet.goal.value * bet.days) <= bet_total)
+              winTheBet();
+            else
+              loseTheBet();
+            break;
+          case "lbs":
+          default:
+            if (bet.goal.value <= bet_total)
+              winTheBet();
+            else
+              loseTheBet();
+            break;
+        }
       }
     }
   },
