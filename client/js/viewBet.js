@@ -78,7 +78,7 @@ Template.viewBet.the_bet = function(){
     case "workout":
       return "Workout "+bet.goal.value+" times in "+bet.days+" days";
     case "run":
-      return "Run "+bet.goal.value+" miles per day for "+bet.days+" days";
+      return "Run "+bet.goal.value+" miles in "+bet.days+" days";
     case "lbs":
     default:
       return "Lose "+bet.goal.value+" lbs in "+bet.days+" days"; 
@@ -218,7 +218,7 @@ Template.viewBet.events({
               loseTheBet();
             break;
           case "run":
-            if ((bet.goal.value * bet.days) <= bet_total)
+            if (bet.goal.value <= bet_total)
               winTheBet();
             else
               loseTheBet();

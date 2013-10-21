@@ -17,7 +17,7 @@ Template.step_one.heading_message = function(){
       return "Total Workouts";
     case "run":
     default:
-      return "Miles to Run per Day";
+      return "Miles to Run";
   }
 };
 Template.step_one.type = function(type){
@@ -47,7 +47,7 @@ Template.step_one.rendered = function(){
     case "run":
     default:
       minimum = 0;
-      maximum = 10;
+      maximum = 100;
       break;
   }
   $('#goal').slider({
