@@ -1,4 +1,11 @@
 //Boolean helpers
+Template.viewBet.isOwnerAndOpenBet = function(bet){
+  return Invites.find({
+    bet: bet._id,
+    accepted: true
+  }).count() == 0
+  && Template.viewBet.isOwner();
+};
 Template.viewBet.isAccepted = function(){
   var bet_obj = Bets.findOne(Session.get('bet'));
   var invs = Invites.find({bet: bet_obj._id}); // all the invites for this bet.
