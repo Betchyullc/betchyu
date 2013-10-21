@@ -16,6 +16,7 @@ Template.viewBet.isAccepted = function(){
   return invite.accepted;
 };
 Template.viewBet.need_bet_update = function(){
+  if (Session.get('force update on') == true) { return true; }
   var bet = Bets.findOne(Session.get('bet'));
 
   if (bet.update){
@@ -186,6 +187,7 @@ Template.viewBet.events({
     });
     
     if (valid){
+      Session.set('force update on', false);
       Bets.update(betId, {$set:{
         update: {
           updatedAt: new Date().getTime(),
@@ -229,6 +231,16 @@ Template.viewBet.events({
             loseTheBet();
           break;
       }
+    }
+  },
+  'click .redo-update': function(e){
+    var forceOn = Session.get('force update on');
+    if (forceOn){
+      $('.dash-update-hook').slideUp(600);
+      Session.set('force update on', false);
+    } else {
+      $('.dash-update-hook').slideDown(600);
+      Session.set('force update on', true);
     }
   }
 });
