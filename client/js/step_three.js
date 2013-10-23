@@ -46,8 +46,16 @@ Template.step_three.events({
     if(!_.contains(_.pluck(curr_friends, 'name'), friend_name)){
       curr_friends[curr_friends.length] = friend_obj;
       Session.set('selected friends', curr_friends);
-      if( undefined == Meteor.users.findOne({"services.facebook.id":friend_obj.id}))
-        alert("This friend is not on Betchyu. You\'ll need to invite them to Betchyu in order for them to accept your Bet. You can do that from the Bet Page, after you Finish making this Bet.");
+      if( undefined == Meteor.users.findOne({"services.facebook.id":friend_obj.id})) {
+        Meteor.shared.makeFB();
+        FB.ui({
+          method: 'feed',
+          link: window.location.origin,
+          to: $(e.target).data('fbid'),
+          name: 'Betchyu',
+          caption: Meteor.user().profile.name + ' wants you to join Betchyu!'
+        });
+      }
     } else {
       Session.set('selected friends', _.reject(curr_friends, function(e){
         return e.id == friend_obj.id;
