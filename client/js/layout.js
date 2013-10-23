@@ -100,7 +100,7 @@ Template.layout.events({
       Session.set('step', 0);
     });
   },
-  'click #signout': function(){
+  'click .signout': function(){
     $('.modal').slideUp(function(){
       Meteor.logout();
     });

@@ -1,7 +1,25 @@
 <template name="toolbar">
   <div class="toolbar">
-    <button id="showMenu"><span class="icon-menu">x</span></button>
-    <span class="username">{{currentUser.profile.name}}</span>
+    <button class="hidden-desktop" id="showMenu"><span class="icon-menu">x</span></button>
+    {{#if currentUser}}
+      <span class="username hidden-desktop">{{currentUser.profile.name}}</span>
+    {{/if}}
+
+    {{#if currentUser}}
+      <div class="toolbar-links visible-desktop">
+        <a href="#" class="nav-link">My Friends Bets</a>
+        <a href="#" class="nav-link">My Bets</a>
+        <a href="#" class="nav-link">New Bet</a>
+        <a href="#" class="signout nav-link">Sign Out</a>
+      </div>
+    {{else}}
+      <div class="toolbar-links visible-desktop">
+        <a href="#" class="nav-link">Stats</a>
+        <a href="#" class="nav-link">More Info</a>
+        <a href="#" class="nav-link">Sign In</a>
+      </div>
+    {{/if}}
+
     <img id="dashboard" src="/logo3.png" style="position:absolute;left:5px;top:0;height:100%"/>
   </div>
 </template>

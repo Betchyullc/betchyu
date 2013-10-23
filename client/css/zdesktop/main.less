@@ -10,6 +10,21 @@
 
 @media screen and (min-device-width:1024px)
 {
+  // Toolbar stuff
+  .toolbar {
+    padding: 6px;
+    height: 50px;
+  }
+  .toolbar-links {
+    float: right;
+    padding: 9px;
+  }
+  .nav-link {
+    display: inline;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  //Main Container
   .step-container{
     width: 500px;
     margin-left: auto;
@@ -19,9 +34,61 @@
     top: 5%;
     overflow: auto;
   }
-  .landing-container {
-    .step-container;
+  .main-block {
+    padding: 15px;
+    margin: 25px;
+
+    height: auto;
+    width: auto;
+
+    border: 1px solid @veryLightGray;
+    .title {
+      display: inline;
+      margin: 0;
+      padding: 10px;
+
+      text-align: center;
+      font-size: 15px;
+
+      position: relative;
+      top: -15px;
+
+      border: 1px solid @gray;
+    }
   }
+
+  // landing page stuff
+  .landing-container {
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    
+    border: none;
+    box-shadow:         none;
+    -moz-box-shadow:    none;
+    -webkit-box-shadow: none;
+    height: auto;
+    background-color: transparent;
+    position: inherit;
+    color: @black;
+  }
+  .landing-head {
+    .main-block;
+  }
+  .landing-logo {
+    height: 400px;
+  }
+  .landing-text {
+    width:  90%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    padding: 9px;
+    margin-top: 20px;
+    font-size: 24px;
+  }
+
+  // Modal stuff
   .modal{
     top: 14.6%;
     height: 85.4%;
