@@ -1,4 +1,9 @@
 Template.toolbar.view = function(viewName){
   return Session.get('view') == viewName;
 };
-Template.toolbar.fbPicURL = Meteor.shared.fbPicURL;
+
+Template.toolbar.events({
+  'click .signin': function(){
+    Meteor.loginWithFacebook();
+  }
+});
