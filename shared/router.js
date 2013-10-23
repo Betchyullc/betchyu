@@ -11,4 +11,5 @@ Router.map(function(){
   this.route('dashboard', {path: '/'}, authController);
   this.route('info');
   this.route('myBets');
+  this.route('friendsBets');
 });
