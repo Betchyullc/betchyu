@@ -37,6 +37,14 @@
       </div>
     </div>
 
+    {{#unless isFinished}}
+      {{#if isOwnerAndOpenBet this}}
+        <div>
+          <button id="addPeopleToBet">Invite more Friends</button>
+        </div>
+      {{/if}}
+    {{/unless}}
+
     {{#if isOwner}}
       <a href="#" class="redo-update">Show Update</a>
       <h2 class="dash-update-hook">Update</h2>
@@ -64,14 +72,6 @@
     {{#unless isAccepted}}
       <button id="acceptBet">Accept the Bet</button>
       <button class="inverse-button" id="declineBet">Decline the Bet</button>
-    {{else}}
-      {{#unless isFinished}}
-        {{#if isOwnerAndOpenBet this}}
-          <div>
-            <button id="addPeopleToBet">Invite more Friends</button>
-          </div>
-        {{/if}}
-      {{/unless}}
     {{/unless}}
   {{/with}}
 </template>
