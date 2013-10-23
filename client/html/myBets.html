@@ -4,44 +4,33 @@
   </h1>
   
   <div class="bet-blocks-container">
-    {{#each acceptedBets}}
-      <div class="bet-block">
-        {{#if wonBet this.bet}}
+  {{#each bets}}
+    <div class="bet-block">
+      {{#unless activeBet this}}
+        {{#if wonBet this}}
           <div class="bet-block-win-notif">
             You Won!
           </div>
-        {{/if}}
-        {{#if lostBet this.bet}}
+        {{else}}
           <div class="bet-block-lose-notif">
             You Lost
           </div>
         {{/if}}
-        <div class="bet-description">
-          <img src="{{fbPicURL inviter}}"/>
-          {{getName inviter}}'s Bet: <a href="#" class="viewBet" data-bet="{{bet}}">{{bet_name this}}</a><br>
-          Time Left: {{days_left this}} days
-        </div>
+      {{/unless}}
+      <button data-bet="{{_id}}" class="viewBet">
+        {{#if activeBet this}}
+          Update
+        {{else}}
+          View
+        {{/if}}
+      </button>
+      <div class="bet-description">
+        Goal: {{bet_name this}}<br>
+        Time Left: {{days_left this}} days
       </div>
-    {{else}}
-      <h2>You have no ongoing Bets :(</h2>
-    {{/each}}
-    {{#if pendingBets}}
-      <h2>New Bets!</h2>
-    {{/if}}
-
-
-    {{#each offeredBets}}
-      <div class="bet-block">
-        <button data-invite="{{_id}}" class="declineBet">Decline</button>
-        <button data-invite="{{_id}}" class="acceptBet bright">Betchyu!</button>
-        <div class="bet-description">
-          <img src="{{fbPicURL inviter}}"/>
-          {{getName inviter}}'s Bet: {{bet_name this}}<br>
-          Time Left: {{days_left this}} days
-        </div>
-      </div>
-    {{else}}
-      <h2>You have no new Bets :(</h2>
-    {{/each}}
+    </div>
+  {{else}}
+    <h2>You have no Goals.</h2>
+  {{/each}}
   </div>
 </template>

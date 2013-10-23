@@ -1,32 +1,29 @@
 <template name="dashboard">
   <div class="dash-body">
-    <button class="big allGoals">My Goals</button>
-    <div style="height:17%; width:100%;"/>
-    <button class="big myBets">My Bets</button>
-    <div style="height:17%; width:100%;"/>
-    <button class="big newGoal">Create Goal</button>
-  </div>
-</template>
-
-<template name="needPersonalInfo">
-<div class="block-content">
-  <div class="personal-image-position">
-    <img class="img vert-center" src="{{fbPicURL true}}"/>
-  </div>
-  <div class="info-block">
-    <div>
-      <input type="text" id="heightInfo" placeholder="FEET' INCHES''"/>
-      Height:
+    <div class="main-block">
+      <a href="#" class="close-main-block">close</a>
+      <h1>Welcome to Betchyu!</h1>
+      {{{welcomeMessage}}}
     </div>
-    <div>
-      <input type="text" id="weightInfo" placeholder="AMOUNT lbs"/>
-      Weight:
+    <div class="main-block">
+      <a href="#" class="close-main-block">close</a>
+      <h1 class="title">Help us Out</h1>
+      <h3>If you'd be so kind, we'd like to ask a few questions:</h3>
+      <div class="survey-container">
+        {{{surveyQuestions}}}
+      </div>
     </div>
-    <div>
-      <input type="text" id="ageInfo" placeholder="YEARS"/>
-      Age:
+    <div class="main-block">
+      <a href="#" class="close-main-block">close</a>
+      <h1 class="title">Friends Activity</h1>
+      <div class="activity-container">
+        {{#each activityItems}}
+          <div class="activity-item-container">
+            {{{image}}}
+            {{{text}}}
+          </div>
+        {{/each}}
+      </div>
     </div>
-    <button id="updatePersonalInfo">Save</button>
   </div>
-</div>
 </template>

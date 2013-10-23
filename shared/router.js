@@ -8,6 +8,7 @@ var authController = function(){
     this.render('landing', {});
 };
 Router.map(function(){
-  this.route('my_home', {path: '/'}, authController);
+  this.route('dashboard', {path: '/'}, authController);
   this.route('info');
+  this.route('myBets');
 });

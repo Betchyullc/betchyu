@@ -3,7 +3,6 @@ Template.dashboard.need_nothing = function(){
          || Template.dashboard.need_bet_update());
 };
 Template.dashboard.fbPicURL = Meteor.shared.fbPicURL;
-Template.needPersonalInfo.fbPicURL = Meteor.shared.fbPicURL;
 Template.dashboard.hasPendingInvites = function(){
   return Template.dashboard.amountOffered() > 0;
 };

@@ -1,29 +1,27 @@
 <template name="landing">
-  <div class="landing-container">
-    <div class="landing-head border-dark">
-      <div class="landing-logo">
-        <h1>
-           Goals are Hard.<br>
-           Betchyu is easy.
-        </h1>
-      </div>
-      <p class="landing-text">We motivate you by letting you set a goal, and having your friends bet against it. Sign in with Facebook to get started.</p>
-      <div class="landing-sign-in">
-        {{loginButtons}}
-      </div>
+  <div class="landing-head border-dark">
+    <div class="landing-logo">
+      <h1>
+         Goals are Hard.<br>
+         Betchyu is easy.
+      </h1>
     </div>
-    <div class="main-block">
-      <h1 class="title">Live Bets</h1>
-      <div class="bets-auto-updater">
-        {{#each newBet}}
-          <div class="mini-block">
-            <p>I bet I can</p>
-            <p>{{betString}}</p>
-            <p>in</p>
-            <p>{{timeString}}</p>
-          </div>
-        {{/each}}
-      </div>
+    <p class="landing-text">We motivate you by letting you set a goal, and having your friends bet against it. Sign in with Facebook to get started.</p>
+    <div class="landing-sign-in">
+      {{loginButtons}}
+    </div>
+  </div>
+  <div class="main-block">
+    <h1 class="title">Live Bets</h1>
+    <div class="bets-auto-updater">
+      {{#each newBet}}
+        <div class="mini-block">
+          <p>I bet I can</p>
+          <p>{{betString}}</p>
+          <p>in</p>
+          <p>{{timeString}}</p>
+        </div>
+      {{/each}}
     </div>
   </div>
 </template>
