@@ -12,5 +12,8 @@ Router.map(function(){
   this.route('info');
   this.route('myBets');
   this.route('friendsBets');
-  this.route('pick_bet_type', {path: '/bet/new'});
+  this.route('newBet', {path: '/bet/new'}, function(){
+    Session.set('step', undefined);
+    this.render();
+  });
 });

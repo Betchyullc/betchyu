@@ -10,6 +10,7 @@
     <div class="landing-sign-in">
       {{loginButtons}}
     </div>
+    <a class="landing-link" href="/info">More Info</a>
   </div>
   <div class="main-block">
     <h1 class="title">Live Bets</h1>
@@ -17,9 +18,9 @@
       {{#each newBet}}
         <div class="mini-block">
           <p>I bet I can</p>
-          <p>{{betString}}</p>
+          <p><strong>{{betString}}</strong></p>
           <p>in</p>
-          <p>{{timeString}}</p>
+          <p><strong>{{days}} days</strong></p>
         </div>
       {{/each}}
     </div>

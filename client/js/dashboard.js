@@ -1,3 +1,10 @@
+Template.dashboard.welcomeMessage = function(){
+  if (Invites.find({invitee: Meteor.userId(), accepted:false, declined:false}).count() > 0){
+    return "<p>Your friend has invited you to a new bet. Hurry and click <a class='highlight' href='/friendsBets'>here</a>, before someone else takes it.</p>";
+  } else if(Bets.find({placer: Meteor.userId()}).count() == 0){
+    return "<p>To get started, you probably want to make a new Bet, right?</p><a class='button' href='/bet/new'>New Bet</a><a class='close-main-block' href='#'>Not right now</a>"
+  }
+};
 Template.dashboard.need_nothing = function(){
   return !(Template.dashboard.need_personal_info() 
          || Template.dashboard.need_bet_update());

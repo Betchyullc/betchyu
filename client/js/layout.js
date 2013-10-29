@@ -1,74 +1,19 @@
 Template.layout.events({
-  'click #nextStep': function(){
-    if (Session.get('view') != 'new goal'){ Meteor.shared.handleAddFriends(); return; }
-    var goal = Session.get('goal');
-    var days = Session.get('days');
-    var product = Session.get('product');
-    var friends = Session.get('selected friends');
-
-    if (Session.get('step') == undefined)
-      Session.set('step', 1);
-    var step = Session.get('step');
-    var allowed_to_proceed = false;
-    if (step == 1){
-      if (goal != undefined
-         && days != undefined)
-        allowed_to_proceed = true;
-    } else if (step == 2) {
-      if (product != undefined)
-        allowed_to_proceed = true;
-    } else { // step == 3
-      if ( friends != undefined){
-        var betId = Bets.insert({
-          placer: Meteor.userId(),
-          goal: {
-            value: goal,
-            type: Session.get('bet type')
-          },
-          days: days,
-          product: product,
-          friends: friends,
-          createdAt: Date()
-        }, function(err, res){
-          // error handling
-        });
-        _.each(friends, function(e, i){
-          var bro = Meteor.users.findOne({"services.facebook.id":e.id});
-          if (bro != undefined){ // the user is already on betchyu
-            Invites.insert({
-              bet: betId,
-              inviter: Meteor.user()._id,
-              invitee: bro._id,
-              accepted: false,
-              declined: false
-            });
-          } else { // gotta ask them through Facebook to join betchyu
-            Invites.insert({
-              bet: betId,
-              inviter: Meteor.user()._id,
-              invitee: e.id,
-              accepted: false,
-              declined: false,
-              uncreated: true
-            });
-          }
-        });
-        allowed_to_proceed = true;
-        // clear all of the Challenge-specific Session data.
-        Session.set('goal', undefined);
-        Session.set('days', undefined);
-        Session.set('product', undefined);
-        Session.set('selected friends', undefined);
-      }else{
-        allowed_to_proceed = false;
-      }
+  'click .close-main-block': function(e){
+    var $t = $(e.currentTarget);
+    var $p = $t.parent();
+    var height = $p.height();
+    if(height != 10){
+      $p.css("overflow", "hidden").animate({
+        height: "10px"
+      });
     }
-
-    if (allowed_to_proceed)
-      Session.set('step', (step + 1));
-    if (Session.get('step') == 4){
-      Session.set('bet', betId);
-      Session.set('view', 'bet');
+  },
+  'click .main-block': function(e){
+    var $t = $(e.currentTarget);
+    var height = $t.height();
+    if(height == 10){
+      $t.attr("style", "");
     }
   },
   'click #showMenu': function(){

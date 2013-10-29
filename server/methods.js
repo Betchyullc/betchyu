@@ -18,5 +18,8 @@ Meteor.methods({
     }, {
       multi: true
     });
+  },
+  getNewBets: function(){
+    return Bets.find({},{limit: 5, sort: {createdAt: -1}}).fetch();
   }
 });

@@ -1,0 +1,15 @@
+<template name="newBet">
+  {{#if started}}
+    {{#if onStep 1}}
+      {{> step_one}}
+    {{/if}}
+    {{#if onStep 2}}
+      {{> step_two}}
+    {{/if}}
+    {{#if onStep 3}}
+      {{> step_three}}
+    {{/if}}
+  {{else}}
+    {{> pick_bet_type}}
+  {{/if}}
+</template>
