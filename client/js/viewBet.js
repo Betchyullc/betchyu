@@ -7,7 +7,7 @@ Template.viewBet.isOwnerAndOpenBet = function(bet){
   && Template.viewBet.isOwner();
 };
 Template.viewBet.isAccepted = function(){
-  var bet_obj = Bets.findOne(Session.get('bet'));
+  var bet_obj = this;
   var invs = Invites.find({bet: bet_obj._id}); // all the invites for this bet.
   var invite = _.find(invs.fetch(), function(e){
     return e.invitee == Meteor.userId();
@@ -17,7 +17,7 @@ Template.viewBet.isAccepted = function(){
 };
 Template.viewBet.need_bet_update = function(){
   if (Session.get('force update on') == true) { return true; }
-  var bet = Bets.findOne(Session.get('bet'));
+  var bet = this;
 
   if (bet.update){
     var timestamp = ((new Date().getTime())-(1000*60*60*24)); // 1 day
@@ -27,26 +27,23 @@ Template.viewBet.need_bet_update = function(){
   }
 };
 Template.viewBet.needToInvite = function(fbid){
-  if (Meteor.userId() != Bets.findOne(Session.get('bet')).placer)
-    return false;
+/*  if (Meteor.userId() != Bets.findOne(Session.get('bet')).placer)
+    return false;*/
   return Meteor.users.findOne({"services.facebook.id":fbid}) == undefined;
 };
 Template.viewBet.accepted = function(betId){
   return Invites.find({bet: betId, accepted: true, declined:false});
 };
 Template.viewBet.isFinished = function(){
-  return _.isString(Bets.findOne(Session.get('bet')).winner);
+  return _.isString(this.winner);
 };
 Template.viewBet.isOwner = function(){
-  return Bets.findOne(Session.get('bet')).placer == Meteor.userId();
+  return this.placer == Meteor.userId();
 };
 
 // object/string returning helpers
-Template.viewBet.bet = function(){
-  return Bets.findOne(Session.get('bet'));
-};
 Template.viewBet.formatted_owners_bet = function(){
-  var bet_obj = Bets.findOne(Session.get('bet'));
+  var bet_obj = this;
   var owner_name = Meteor.users.findOne(bet_obj.placer).profile.name;
   if (owner_name == Meteor.user().profile.name)
     return "My Goal";
@@ -59,7 +56,7 @@ Template.viewBet.getName = function(userId){
 Template.viewBet.resultOfBet = function(){
   var win = '<span style="color:green">You Won!</span>',
       lose = '<span style="color:red">You Lost...</span>',
-      bet = Bets.findOne(Session.get('bet'));
+      bet = this;
   if (bet.placer == Meteor.userId()){
     if(bet.winner == 'placer')
       return win;
@@ -70,8 +67,8 @@ Template.viewBet.resultOfBet = function(){
     return win;
   }
 };
-Template.viewBet.the_bet = function(){
-  var bet = Bets.findOne(Session.get('bet'));
+Template.viewBet.betTitle = function(){
+  var bet = this;
   switch(bet.goal.type){
     case "calories":
       return "Eat only "+bet.goal.value+" calories per day for "+bet.days+" days";

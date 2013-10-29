@@ -17,13 +17,13 @@
           </div>
         {{/if}}
       {{/unless}}
-      <button data-bet="{{_id}}" class="viewBet">
+      <a href="/bet/{{_id}}" class="button">
         {{#if activeBet this}}
           Update
         {{else}}
           View
         {{/if}}
-      </button>
+      </a>
       <div class="bet-description">
         Goal: {{bet_name this}}<br>
         Time Left: {{days_left this}} days

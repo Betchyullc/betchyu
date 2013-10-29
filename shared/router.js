@@ -16,4 +16,10 @@ Router.map(function(){
     Session.set('step', undefined);
     this.render();
   });
+  this.route('viewBet', {
+    path: '/bet/:id',
+    data: function(){
+      return Bets.findOne(this.params.id);
+    }
+  }, authController)
 });

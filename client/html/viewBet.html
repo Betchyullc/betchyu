@@ -3,75 +3,73 @@
   {{#if isFinished}}
     {{{resultOfBet}}}
   {{/if}}
-  {{#with bet}}
-    <div class="bet-header">
-      The Bet: {{the_bet}}<br>
-      Days Left: {{days_left this}}<br>
-      The Stake: {{product.product}}
+  <div class="bet-header">
+    The Bet: {{betTitle}}<br>
+    Days Left: {{days_left this}}<br>
+    The Stake: {{product.product}}
+  </div>
+  <h2>Friends</h2>
+  <div class="bet-friends-container">
+    <div class="bet-onBoard-list">
+      <div class="bet-onBoard-list-head">
+        On Board:
+      </div>
+      {{#each accepted this._id}}
+        {{getName invitee}}<br>
+      {{/each}}
     </div>
-    <h2>Friends</h2>
-    <div class="bet-friends-container">
-      <div class="bet-onBoard-list">
-        <div class="bet-onBoard-list-head">
-          On Board:
-        </div>
-        {{#each accepted this._id}}
-          {{getName invitee}}<br>
-        {{/each}}
+    <div class="bet-invited-list">
+      <div class="bet-invited-list-head">
+        Invited:
       </div>
-      <div class="bet-invited-list">
-        <div class="bet-invited-list-head">
-          Invited:
-        </div>
-        <ul>
-        {{#each friends}}
-          <li>
-            {{#if needToInvite this.id}}
-              <button data-fbid="{{this.id}}" class="inviteToBetchyu">{{this.name}}</button>
-            {{else}}
-              {{this.name}}
-            {{/if}}
-          </li>
-        {{/each}}
-        </ul>
-      </div>
+      <ul>
+      {{#each friends}}
+        <li>
+          {{#if needToInvite this.id}}
+            <button data-fbid="{{this.id}}" class="inviteToBetchyu">{{this.name}}</button>
+          {{else}}
+            {{this.name}}
+          {{/if}}
+        </li>
+      {{/each}}
+      </ul>
     </div>
+  </div>
 
-    {{#if isOwner}}
-      <a href="#" class="redo-update">Show Update</a>
-      <h2 class="dash-update-hook">Update</h2>
-      <div class="block dash-update-hook">
-        {{#if need_bet_update}}
-          <div data-_id="{{this._id}}" class="block-content">
-            {{{bet_progress this}}}
-            <button id="updateBetInfo">Save</button>
-          </div>
-        {{else}}
-          <div class="dash-info-good">We don't need anything right now!</div>
-        {{/if}}
-      </div>
-    {{else}}
-      <h2>Progress</h2>
-      <div class="block">
-        {{#if this.update}}
-          {{{days_from_bet this}}}
-        {{else}}
-          <div class="dash-info-good">There have been no updates...</div>
-        {{/if}}
-      </div>
-    {{/if}}
+  {{#if isOwner}}
+    <a href="#" class="redo-update">Show Update</a>
+    <h2 class="dash-update-hook">Update</h2>
+    <div class="block dash-update-hook">
+      {{#if need_bet_update}}
+        <div data-_id="{{this._id}}" class="block-content">
+          {{{bet_progress this}}}
+          <button id="updateBetInfo">Save</button>
+        </div>
+      {{else}}
+        <div class="dash-info-good">We don't need anything right now!</div>
+      {{/if}}
+    </div>
+  {{else}}
+    <h2>Progress</h2>
+    <div class="block">
+      {{#if this.update}}
+        {{{days_from_bet this}}}
+      {{else}}
+        <div class="dash-info-good">There have been no updates...</div>
+      {{/if}}
+    </div>
+  {{/if}}
 
-    {{#unless isAccepted}}
-      <button id="acceptBet">Accept the Bet</button>
-      <button class="inverse-button" id="declineBet">Decline the Bet</button>
-    {{else}}
-      {{#unless isFinished}}
-        {{#if isOwnerAndOpenBet this}}
-          <div>
-            <button id="addPeopleToBet">Invite more Friends</button>
-          </div>
-        {{/if}}
-      {{/unless}}
+  {{#unless isAccepted}}
+    <button id="acceptBet">Accept the Bet</button>
+    <button class="inverse-button" id="declineBet">Decline the Bet</button>
+  {{else}}
+    {{#unless isFinished}}
+      {{#if isOwnerAndOpenBet this}}
+        <div>
+          <button id="addPeopleToBet">Invite more Friends</button>
+        </div>
+      {{/if}}
     {{/unless}}
-  {{/with}}
+  {{/unless}}
 </template>
