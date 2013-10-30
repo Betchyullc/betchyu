@@ -1,9 +1,7 @@
 <template name="myBets">
-  <h1>
-    My Bets
-  </h1>
   
-  <div class="bet-blocks-container">
+  <div class="main-block">
+  <h1 class="title">My Bets</h1>
   {{#each bets}}
     <div class="bet-block">
       {{#unless activeBet this}}

@@ -1,9 +1,6 @@
 <template name="friendsBets">
-  <h1>
-    Friends Bets
-  </h1>
-
-  <div class="bet-blocks-container">
+  <div class="main-block">
+    <h1 class="title">Friends Bets</h1>
     {{#each acceptedBets}}
       <div class="bet-block">
         {{#if wonBet this.bet}}

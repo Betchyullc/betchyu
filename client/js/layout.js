@@ -19,45 +19,14 @@ Template.layout.events({
   'click #showMenu': function(){
     Meteor.shared.showModal('#mainMenuModal');
   },
-  'click .allGoals': function(){
-    $('.modal').slideUp(function(){
-      Session.set('view', "goals");
-    });
-  },
-  'click #showAcceptedBets': function(){
-    $('.modal').slideUp(function(){
-      Session.set('view','acceptedBets');
-    });
-  },
-  'click #showOfferedBets': function(){
-    $('.modal').slideUp(function(){
-      Session.set('view', 'offeredBets');
-    });
-  },
-  'click .myBets': function(){
-    $('.modal').slideUp(function(){
-      Session.set('view', "my bets");
-    });
-  },
-  'click .newGoal': function(){
-    $('.modal').slideUp(function(){
-      Session.set('view', "new goal");
-      Session.set('step', 0);
-    });
+  'click .menu-body a': function(e){
+    e.preventDefault();
+    $('.modal').slideUp();
   },
   'click .signout': function(){
     $('.modal').slideUp(function(){
       Meteor.logout();
     });
-  },
-  'click #dashboard': function(){
-    $('.modal').slideUp(function(){
-      Session.set('view', 'dashboard');
-    });
-  },
-  'click .viewBet': function(e){
-    Session.set('bet', $(e.target).data("bet"));
-    Session.set('view', 'bet');
   },
   'click #declineBet': function(){
     var invId = Invites.findOne({

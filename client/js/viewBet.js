@@ -27,8 +27,6 @@ Template.viewBet.need_bet_update = function(){
   }
 };
 Template.viewBet.needToInvite = function(fbid){
-/*  if (Meteor.userId() != Bets.findOne(Session.get('bet')).placer)
-    return false;*/
   return Meteor.users.findOne({"services.facebook.id":fbid}) == undefined;
 };
 Template.viewBet.accepted = function(betId){

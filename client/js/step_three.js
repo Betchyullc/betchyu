@@ -1,10 +1,6 @@
 // Helpers
 Template.step_three.selectedFriends = function(){
-  if (Session.get('view') == 'new goal'){
-    return Session.get('selected friends');
-  } else {
-    return Bets.findOne(Session.get('bet')).friends;
-  }
+  return Session.get('selected friends');
 };
 Template.step_three.formatted_num_selected = function(){
   var len = Session.get('selected friends').length;

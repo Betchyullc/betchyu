@@ -3,8 +3,31 @@ Template.dashboard.welcomeMessage = function(){
     return "<p>Your friend has invited you to a new bet. Hurry and click <a class='highlight' href='/friendsBets'>here</a>, before someone else takes it.</p>";
   } else if(Bets.find({placer: Meteor.userId()}).count() == 0){
     return "<p>To get started, you probably want to make a new Bet, right?</p><a class='button' href='/bet/new'>New Bet</a><a class='close-main-block' href='#'>Not right now</a>"
+  } else if(Bets.find({placer: Meteor.userId(), winner: undefined}).count() > 0){
+    return "<p>You have some bets to <a class='highlight' href='/myBets'>update</a></p>";
   }
 };
+Template.dashboard.surveyQuestions = function(){
+  var oldFeedback = Feedback.find().fetch();
+  var answeredNums = _.pluck(oldFeedback, 'question');
+  // qs is the list of question strings, minus the questions he's already answered.
+  var qs = _.reject(Meteor.shared.feedbackQuestions, function(e,i){
+    return _.contains(answeredNums, i);
+  });
+
+  if(qs.length == 0)
+    return "<p>You're amazing and have answered all of our questions already.</p>";
+  return "<p id='feedbackQuestion' data-number='"+_.indexOf(Meteor.shared.feedbackQuestions, qs[0])+"'>"+
+         qs[0]+"</p>"+
+         "<input type='text' id='feedbackQuestionAnswer'/>"+
+         "<button id='answerFeedbackQuestion'>Answer</button>"
+         ;
+};
+
+/*
+
+   OLD CODE
+
 Template.dashboard.need_nothing = function(){
   return !(Template.dashboard.need_personal_info() 
          || Template.dashboard.need_bet_update());
@@ -74,9 +97,15 @@ Template.dashboard.bet_progress = function(bet){
   }
 };
 
-
-Template.dashboard.created = function(){ Meteor.shared.logPageView("dashboard");};
-
+Template.dashboard.rendered = function(){
+  if (Template.dashboard.need_nothing()){
+    $('.dash-update-hook').delay(1500).slideUp(function(){
+      $('.dash-news-hook').animate({
+        height: '75%'
+      }, 1500);
+    });
+  }
+};
 Template.dashboard.events({
   'click #updatePersonalInfo': function(){
     var height = $('#heightInfo').val();
@@ -105,16 +134,19 @@ Template.dashboard.events({
         done_each_day: updates
       }
     }});
+  }
+});
+*/
 
+Template.dashboard.events({
+  'click #answerFeedbackQuestion': function(){
+    Feedback.insert({
+      question: parseInt($('#feedbackQuestion').data('number')),
+      response: $('#feedbackQuestionAnswer').val().trim(),
+      responder: Meteor.userId()
+    });
   }
 });
 
-Template.dashboard.rendered = function(){
-  if (Template.dashboard.need_nothing()){
-    $('.dash-update-hook').delay(1500).slideUp(function(){
-      $('.dash-news-hook').animate({
-        height: '75%'
-      }, 1500);
-    });
-  }
-}
+Template.dashboard.created = function(){ Meteor.shared.logPageView("dashboard");};
+

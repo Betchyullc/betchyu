@@ -74,3 +74,16 @@ Meteor.publish(null, function(){
     return null;
   }
 });
+
+//////////////
+// Feedback //
+//////////////
+
+// Contingent on login, publish all the Feedback items made by the user
+Meteor.publish(null, function(){
+  if (this.userId){
+    return Feedback.find({responder: this.userId});
+  } else {
+    return null;
+  }
+});
