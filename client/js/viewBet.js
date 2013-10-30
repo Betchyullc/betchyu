@@ -40,20 +40,13 @@ Template.viewBet.isOwner = function(){
 };
 
 // object/string returning helpers
-Template.viewBet.formatted_owners_bet = function(){
-  var bet_obj = this;
-  var owner_name = Meteor.users.findOne(bet_obj.placer).profile.name;
-  if (owner_name == Meteor.user().profile.name)
-    return "My Goal";
-  return owner_name + "'s Bet";
-};
 Template.viewBet.days_left = Meteor.shared.days_left;
 Template.viewBet.getName = function(userId){
   return Meteor.users.findOne(userId).profile.name;
 };
 Template.viewBet.resultOfBet = function(){
-  var win = '<span style="color:green">You Won!</span>',
-      lose = '<span style="color:red">You Lost...</span>',
+  var win = '<p class="bet-win-text">You Win!</p>',
+      lose = '<p class="bet-lose-text">You Lose</p>',
       bet = this;
   if (bet.placer == Meteor.userId()){
     if(bet.winner == 'placer')

@@ -1,7 +1,11 @@
 <template name="viewBet">
-  {{formatted_owners_bet}}
   {{#if isFinished}}
-    {{{resultOfBet}}}
+    <div class="main-block">
+      <h1 class="title">Result</h1>
+      <a href="#" class="close-main-block">close</a>
+      {{{resultOfBet}}}
+      <p>{{loser}} owes {{winner}} {{product.product}}</p>
+    </div>
   {{/if}}
   <div class="bet-header">
     The Bet: {{betTitle}}<br>
